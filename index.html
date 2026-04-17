@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOD 010837 – Financial Environment & Analysis | 150 Revision Questions v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0d1b2a;--navy-card:#162840;--navy-border:#1e3554;
+    --gold:#c9a84c;--gold-light:#e4c068;--gold-dim:#7a6030;
+    --ivory:#f4eed8;--ivory-dim:#c8bfa0;
+    --green:#3db87a;--red:#e05c5c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy);color:var(--ivory);font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.7;min-height:100vh;}
+  header{background:linear-gradient(135deg,#091320 0%,#0d1b2a 40%,#0f2240 100%);border-bottom:2px solid var(--gold-dim);padding:2.5rem 2rem 2rem;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,168,76,.03) 40px,rgba(201,168,76,.03) 41px);}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;color:var(--gold);letter-spacing:.02em;position:relative;}
+  header p{color:var(--ivory-dim);font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;margin-top:.4rem;position:relative;}
+  .badge-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem;position:relative;}
+  .badge{background:rgba(201,168,76,.12);border:1px solid var(--gold-dim);color:var(--gold-light);padding:.3rem .9rem;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.05em;}
+  #sticky-bar{position:sticky;top:0;z-index:100;background:#091320ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--navy-border);padding:.7rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+  #score-display{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--gold);}
+  #progress-bar-wrap{flex:1;min-width:160px;height:6px;background:var(--navy-border);border-radius:3px;overflow:hidden;}
+  #progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width .4s ease;border-radius:3px;}
+  .ctrl-btn{font-family:'JetBrains Mono',monospace;font-size:.75rem;background:transparent;border:1px solid var(--navy-border);color:var(--ivory-dim);padding:.3rem .8rem;border-radius:2px;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+  .ctrl-btn:hover{border-color:var(--gold-dim);color:var(--gold);}
+  #filter-section{padding:1.2rem 2rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--navy-border);}
+  #filter-section span{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--ivory-dim);text-transform:uppercase;letter-spacing:.06em;margin-right:.3rem;}
+  .topic-btn{font-family:'JetBrains Mono',monospace;font-size:.72rem;background:transparent;border:1px solid var(--navy-border);color:var(--ivory-dim);padding:.25rem .65rem;border-radius:2px;cursor:pointer;transition:all .2s;letter-spacing:.04em;}
+  .topic-btn:hover,.topic-btn.active{background:rgba(201,168,76,.12);border-color:var(--gold-dim);color:var(--gold-light);}
+  main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem;}
+  .topic-header{margin:3rem 0 1.5rem;display:flex;align-items:center;gap:1rem;}
+  .topic-header h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--gold);white-space:nowrap;}
+  .topic-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
+  .topic-count{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold-dim);letter-spacing:.08em;}
+  .q-card{background:var(--navy-card);border:1px solid var(--navy-border);border-left:3px solid var(--navy-border);border-radius:4px;margin-bottom:1.2rem;overflow:hidden;transition:border-left-color .3s;}
+  .q-card.answered-correct{border-left-color:var(--green);}
+  .q-card.answered-wrong{border-left-color:var(--red);}
+  .q-head{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.4rem 1rem;}
+  .q-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold-dim);letter-spacing:.06em;padding-top:.15rem;white-space:nowrap;min-width:38px;}
+  .q-text{font-size:1rem;color:var(--ivory);line-height:1.6;font-weight:400;}
+  .q-options{padding:0 1.4rem .8rem 3.4rem;display:flex;flex-direction:column;gap:.45rem;}
+  .opt-btn{display:flex;align-items:flex-start;gap:.7rem;background:rgba(255,255,255,.03);border:1px solid var(--navy-border);border-radius:3px;padding:.55rem .9rem;cursor:pointer;text-align:left;color:var(--ivory-dim);font-family:'Source Serif 4',serif;font-size:.92rem;font-weight:300;line-height:1.5;transition:all .18s;width:100%;}
+  .opt-btn:hover:not(:disabled){background:rgba(201,168,76,.07);border-color:var(--gold-dim);color:var(--ivory);}
+  .opt-btn:disabled{cursor:default;}
+  .opt-letter{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold-dim);min-width:18px;padding-top:.05rem;}
+  .opt-btn.correct{background:rgba(61,184,122,.12);border-color:var(--green);color:var(--ivory);}
+  .opt-btn.correct .opt-letter{color:var(--green);}
+  .opt-btn.wrong{background:rgba(224,92,92,.1);border-color:var(--red);color:var(--ivory-dim);}
+  .opt-btn.wrong .opt-letter{color:var(--red);}
+  .explanation{display:none;background:rgba(201,168,76,.05);border-top:1px solid var(--navy-border);padding:1rem 1.4rem 1rem 3.4rem;}
+  .explanation.show{display:block;}
+  .exp-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-dim);margin-bottom:.4rem;}
+  .exp-text{font-size:.9rem;color:var(--ivory-dim);line-height:1.65;}
+  .exp-text strong{color:var(--gold-light);font-weight:400;}
+  .q-feedback{padding:.4rem 1.4rem .8rem 3.4rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;display:none;}
+  .q-feedback.show{display:block;}
+  .q-feedback.correct-fb{color:var(--green);}
+  .q-feedback.wrong-fb{color:var(--red);}
+  #summary{display:none;background:var(--navy-card);border:1px solid var(--gold-dim);border-radius:4px;padding:2.5rem 2rem;text-align:center;margin-top:3rem;}
+  #summary h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);margin-bottom:.5rem;}
+  #summary p{color:var(--ivory-dim);font-size:1rem;}
+  #summary .final-score{font-family:'JetBrains Mono',monospace;font-size:3rem;color:var(--gold);margin:1rem 0;}
+  #summary .grade-msg{font-size:1.1rem;color:var(--green);margin:.5rem 0 1.5rem;}
+  #restart-btn{background:var(--gold);color:var(--navy);border:none;padding:.8rem 2rem;font-family:'Playfair Display',serif;font-size:1rem;border-radius:3px;cursor:pointer;font-weight:600;transition:background .2s;}
+  #restart-btn:hover{background:var(--gold-light);}
+  @media(max-width:600px){.q-options,.explanation,.q-feedback{padding-left:1.4rem;}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Financial Environment &amp; Analysis</h1>
+  <p>MOD 010837 &mdash; 150 Revision Questions &mdash; Audited v2</p>
+  <div class="badge-row">
+    <span class="badge">150 Questions</span>
+    <span class="badge">10 Topics</span>
+    <span class="badge">Scenario-Based</span>
+    <span class="badge">Answers &amp; Explanations</span>
+  </div>
+</header>
+<div id="sticky-bar">
+  <span id="score-display">Score: 0 / 0</span>
+  <div id="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <button class="ctrl-btn" onclick="revealAll()">Reveal All Answers</button>
+  <button class="ctrl-btn" onclick="resetAll()">Reset</button>
+</div>
+<div id="filter-section">
+  <span>Topic:</span>
+  <button class="topic-btn active" onclick="filterTopic('all',this)">All</button>
+  <button class="topic-btn" onclick="filterTopic('ratios',this)">Ratios</button>
+  <button class="topic-btn" onclick="filterTopic('statements',this)">Statements</button>
+  <button class="topic-btn" onclick="filterTopic('investment',this)">Investment</button>
+  <button class="topic-btn" onclick="filterTopic('esg',this)">ESG</button>
+  <button class="topic-btn" onclick="filterTopic('regulation',this)">Regulation</button>
+  <button class="topic-btn" onclick="filterTopic('fraud',this)">Fraud</button>
+  <button class="topic-btn" onclick="filterTopic('fintech',this)">FinTech</button>
+  <button class="topic-btn" onclick="filterTopic('data',this)">Data</button>
+  <button class="topic-btn" onclick="filterTopic('standards',this)">Standards</button>
+  <button class="topic-btn" onclick="filterTopic('mixed',this)">Mixed</button>
+</div>
+<main id="main-content"></main>
+<script>
+const QUESTIONS=[
+// ══════════════════════════════════════════════════
+// GROUP 1 · FINANCIAL RATIOS & CALCULATIONS (1–25)
+// ══════════════════════════════════════════════════
+{topic:'ratios',group:'Financial Ratios & Calculations',
+q:'Northgate Ltd has current assets of £480,000 and current liabilities of £160,000. What is the current ratio, and what does it indicate?',
+opts:['0.33:1 — the company cannot meet its short-term obligations','3:1 — the company has strong short-term liquidity','1.5:1 — the company is marginally liquid','4:1 — the company has too much idle cash'],ans:1,
+exp:'Current ratio = Current assets ÷ Current liabilities = £480,000 ÷ £160,000 = <strong>3:1</strong>. This indicates the company has £3 of current assets for every £1 of current liabilities — strong short-term liquidity.'},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Meridian Ltd has current assets of £320,000, inventory of £95,000, and current liabilities of £125,000. What is the acid test (quick) ratio?”,
+opts:[“2.56”,“1.80”,“1.80 — the company is dependent on inventory”,“2.0”],ans:1,
+exp:“Acid test = (Current assets − Inventory) ÷ Current liabilities = (£320,000 − £95,000) ÷ £125,000 = £225,000 ÷ £125,000 = <strong>1.8</strong>. Above 1.0 indicates the company can meet short-term obligations without selling inventory.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Crestwood Retail Ltd generates £800,000 in revenue and achieves a gross profit of £240,000. What is the gross profit margin?”,
+opts:[“20%”,“25%”,“30%”,“40%”],ans:2,
+exp:“Gross Profit Margin = Gross Profit ÷ Revenue × 100 = £240,000 ÷ £800,000 × 100 = <strong>30%</strong>. This means 30p from every £1 of sales remains after deducting the direct cost of goods sold.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Eastbrook Services Ltd reports net profit of £72,000 and total revenue of £600,000. What is the net profit margin?”,
+opts:[“8.33%”,“10%”,“12%”,“15%”],ans:2,
+exp:“Net Profit Margin = Net Profit ÷ Revenue × 100 = £72,000 ÷ £600,000 × 100 = <strong>12%</strong>. This means 12p is retained as net profit per £1 of sales after all costs including tax and interest.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Hillside Engineering plc earned operating profit of £180,000. Its total capital employed was £900,000. What is ROCE?”,
+opts:[“2%”,“10%”,“20%”,“25%”],ans:2,
+exp:“ROCE = Operating Profit ÷ Capital Employed × 100 = £180,000 ÷ £900,000 × 100 = <strong>20%</strong>. ROCE measures how efficiently long-term capital generates operating profit.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Pinnacle Ltd has long-term debt of £240,000 and total equity of £800,000. What is the debt-to-equity ratio, and what does it suggest?”,
+opts:[“3.33:1 — highly leveraged”,“0.3:1 — conservative financing with relatively low debt”,“0.5:1 — moderately geared”,“1:1 — balanced financing”],ans:1,
+exp:“Debt-to-equity = £240,000 ÷ £800,000 = <strong>0.3:1</strong>. The company has 30p of debt for every £1 of equity — a conservative, low-gearing position, which means lower financial risk but potentially missed tax benefits of debt.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Fairway Wholesalers has cost of sales of £560,000 and average inventory of £80,000. What is the stock turnover ratio?”,
+opts:[“5 times”,“7 times”,“8 times”,“10 times”],ans:1,
+exp:“Stock Turnover = Cost of Sales ÷ Average Inventory = £560,000 ÷ £80,000 = <strong>7 times</strong>. Inventory is replaced 7 times per year — efficient stock management reducing holding costs.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Bilton Electronics Ltd has net profit of £99,000 and capital employed of £1,100,000. What is ROCE?”,
+opts:[“9%”,“9.09%”,“10%”,“11%”],ans:1,
+exp:“ROCE = £99,000 ÷ £1,100,000 × 100 = <strong>9.09%</strong>. This is a relatively modest return. If the company’s cost of capital exceeds 9.09%, it is destroying value.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Vantage Ltd has sales of £350,000 and gross profit of £105,000. What is the gross profit ratio?”,
+opts:[“20%”,“25%”,“30%”,“33%”],ans:2,
+exp:“Gross Profit Ratio = £105,000 ÷ £350,000 × 100 = <strong>30%</strong>. For every £1 of revenue, 30p remains after deducting cost of sales to contribute to overheads and profit.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Lakeside Ltd has current assets of £240,000, inventory of £70,000, and current liabilities of £85,000. What is the acid test ratio?”,
+opts:[“1.41”,“2.82”,“0.82”,“2.00”],ans:3,
+exp:“Acid test = (Current assets − Inventory) ÷ Current liabilities = (£240,000 − £70,000) ÷ £85,000 = £170,000 ÷ £85,000 = <strong>2.0</strong>. A ratio of 2.0 means the company has £2 of liquid assets for every £1 of current liabilities — ample liquidity to meet short-term obligations without relying on selling inventory.”},,
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Lakeside Ltd has current assets of £210,000, inventory of £60,000, and current liabilities of £100,000. What is the acid test ratio?”,
+opts:[“1.5”,“2.1”,“0.6”,“2.7”],ans:0,
+exp:“Acid test = (Current assets − Inventory) ÷ Current liabilities = (£210,000 − £60,000) ÷ £100,000 = £150,000 ÷ £100,000 = <strong>1.5</strong>. A ratio above 1.0 indicates the company can meet short-term liabilities without relying on selling inventory.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Which ratio most directly measures how well a company generates operating profit from its long-term invested capital?”,
+opts:[“Current ratio”,“Acid test ratio”,“Return on Capital Employed (ROCE)”,“Net profit margin”],ans:2,
+exp:”<strong>ROCE</strong> = Operating Profit ÷ Capital Employed. It specifically evaluates how efficiently a company uses its total long-term financing (equity + long-term debt) to generate profit — the key measure of capital efficiency.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A retailer’s current ratio falls from 1.9 to 0.85 over six months. Which scenario MOST likely explains this change?”,
+opts:[“The company issued new shares and invested proceeds in long-term assets”,“The company paid down a long-term mortgage”,“A surge in short-term borrowing to fund working capital, with declining inventory turnover”,“The company successfully collected all outstanding debts”],ans:2,
+exp:“A current ratio falling below 1.0 means current liabilities now exceed current assets. This pattern is consistent with <strong>rising short-term borrowing</strong> (increasing current liabilities) while working capital deteriorates — a serious liquidity warning sign.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Silverton Ltd has net profit of £18,750 and revenue of £375,000. What is the net profit margin?”,
+opts:[“4%”,“5%”,“6%”,“7%”],ans:1,
+exp:“Net Profit Margin = £18,750 ÷ £375,000 × 100 = <strong>5%</strong>. For every £1 in revenue, only 5p is retained as net profit — a thin margin typical of competitive retail or distribution businesses.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“The acid test ratio is a stricter measure of liquidity than the current ratio. Why is inventory excluded from the acid test calculation?”,
+opts:[“Inventory is a non-current asset in all circumstances”,“Inventory cannot be owned by the company”,“Inventory is the least liquid current asset and may not be quickly converted to cash at full value”,“Inventory is excluded for tax purposes only”],ans:2,
+exp:“Inventory is excluded from the acid test because it is the <strong>least liquid current asset</strong> — it must first be sold (which takes time) and may be subject to markdowns. The acid test therefore provides a more conservative liquidity measure.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Apex Ltd has total equity of £600,000 and net profit after tax of £78,000. What is Return on Equity (ROE)?”,
+opts:[“7.7%”,“10%”,“13%”,“15%”],ans:2,
+exp:“ROE = Net Profit ÷ Total Equity × 100 = £78,000 ÷ £600,000 × 100 = <strong>13%</strong>. This measures the return generated for shareholders on their invested capital.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A company’s gross profit margin is 35% and its net profit margin is 8%. What does the large gap between these two figures most likely indicate?”,
+opts:[“The company has high direct production costs”,“The company has significant overhead costs, finance charges, or depreciation that consume most gross profit”,“The company is growing very quickly”,“The cost of sales is understated”],ans:1,
+exp:“The gap between GPM (35%) and NPM (8%) represents <strong>operating expenses, interest charges, and tax</strong> consuming 27% of revenue. A large gap signals high overhead burden — administration, depreciation, interest — which should be investigated.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Stroud Engineering plc reports operating profit of £112,000 on capital employed of £560,000. What is ROCE?”,
+opts:[“15%”,“20%”,“25%”,“50%”],ans:1,
+exp:“ROCE = £112,000 ÷ £560,000 × 100 = <strong>20%</strong>. The company earns 20p of operating profit for every £1 of long-term capital employed — generally considered an efficient return.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A company has a debt-to-equity ratio of 2.5:1. What is the PRIMARY financial implication of this?”,
+opts:[“The company is highly profitable”,“The company is funded mainly by shareholders with minimal external debt”,“The company is heavily reliant on external borrowing, creating significant fixed interest obligations”,“The company has strong short-term liquidity”],ans:2,
+exp:“A D/E ratio of 2.5:1 means the company has <strong>£2.50 of debt for every £1 of equity</strong> — highly leveraged. This creates substantial fixed interest payments that must be met regardless of trading performance, increasing financial risk.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Brookfield Ltd earns net profit of £54,000 on revenue of £360,000. What is the net profit margin?”,
+opts:[“12%”,“15%”,“18%”,“20%”],ans:1,
+exp:“NPM = £54,000 ÷ £360,000 × 100 = <strong>15%</strong>. The company retains 15p for every £1 of revenue after all costs, taxes and interest — a solid margin for a service business.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A company’s debtor days (average collection period) rises from 28 days to 62 days over two years. What is the most concerning implication?”,
+opts:[“The company is growing strongly and invoicing more clients”,“Customers are taking longer to pay, cash is tied up in receivables, and liquidity is under pressure”,“The company has improved its credit terms to attract new customers”,“Profitability has fallen because revenue is declining”],ans:1,
+exp:“Rising debtor days means <strong>cash is being collected more slowly</strong>. Even if the company is profitable, the delay between invoicing and receiving cash creates working capital pressure and increases the risk of bad debts.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Which financial user would be MOST concerned about a company’s ROCE figure?”,
+opts:[“A short-term creditor evaluating whether to extend credit”,“A long-term equity investor assessing management’s efficiency in using capital”,“A customer deciding whether to place an order”,“An employee assessing job security”],ans:1,
+exp:“Long-term investors are most interested in <strong>ROCE</strong> because it measures whether management is generating adequate returns from the capital entrusted to them — directly relating to long-term value creation.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A gross profit margin of 45% means:”,
+opts:[“45p of every £1 revenue is retained as net profit after all costs”,“45p of every £1 revenue remains after deducting the direct cost of producing those goods or services”,“The company’s operating expenses are 45% of revenue”,“Tax represents 45% of gross profit”],ans:1,
+exp:“Gross Profit Margin = (Revenue − Cost of Sales) ÷ Revenue × 100. <strong>45%</strong> means that after deducting direct production/purchase costs only, 45p per £1 remains. It does not yet account for overheads, interest, or tax.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“A trade supplier is deciding whether to extend 60-day credit terms to a new customer. Which financial ratio should the supplier examine FIRST?”,
+opts:[“ROCE — to confirm the customer generates good returns”,“Net profit margin — to confirm the customer is profitable”,“Current ratio — to confirm the customer can pay short-term obligations when due”,“Debt-to-equity — to assess long-term solvency”],ans:2,
+exp:“A supplier extending credit primarily needs to know if the customer can <strong>pay within 60 days</strong> — a short-term obligation. The <strong>current ratio</strong> directly addresses this by comparing readily available assets to short-term liabilities.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Torquay Manufacturing plc has ROCE of 7.5% and its average cost of debt is 11%. What does this relationship indicate?”,
+opts:[“The company is creating excellent shareholder value”,“The company earns more than enough to cover its borrowing costs”,“The company is NOT generating sufficient returns to cover its cost of borrowing — value is being destroyed”,“The company should take on more debt immediately”],ans:2,
+exp:“When ROCE (7.5%) falls below the cost of debt (11%), the company is <strong>not earning enough from its capital to service its interest obligations</strong>. This is unsustainable — the company is effectively borrowing at 11% and earning only 7.5% on that capital.”},
+
+{topic:“ratios”,group:“Financial Ratios & Calculations”,
+q:“Ferndale Ltd has current assets of £660,000 and current liabilities of £440,000. What is the working capital, and what does this indicate?”,
+opts:[“£1,100,000 — excessive liquidity”,“−£220,000 — working capital deficit”,“£220,000 — positive working capital, the company can meet short-term obligations”,“£660,000 — total available resources”],ans:2,
+exp:“Working Capital = Current Assets − Current Liabilities = £660,000 − £440,000 = <strong>£220,000</strong>. Positive working capital means the company has more short-term assets than short-term liabilities — it can cover its near-term obligations.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 2 · FINANCIAL STATEMENTS (26–50)
+// ══════════════════════════════════════════════════
+{topic:“statements”,group:“Financial Statements”,
+q:“Which financial statement provides a snapshot of a business’s assets, liabilities and equity at a single point in time?”,
+opts:[“Income statement (profit and loss account)”,“Cash flow statement”,“Balance sheet (statement of financial position)”,“Statement of changes in equity”],ans:2,
+exp:“The <strong>balance sheet</strong> is a snapshot at a specific date. Unlike the income statement or cash flow statement — which cover a period — the balance sheet shows what the business owns, owes, and the net equity at that moment.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A student wants to know whether a company grew its profit over the last financial year. Which statement should they examine?”,
+opts:[“Balance sheet — it shows total assets over time”,“Cash flow statement — it shows operating activities”,“Income statement — it records revenue and expenses over the period”,“Notes to the accounts — they summarise profit trends”],ans:2,
+exp:“The <strong>income statement</strong> (profit and loss account) records all revenue earned and all expenses incurred over a period, culminating in a net profit or loss figure. It is the primary statement for assessing trading performance.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A company’s income statement shows net profit of £850,000, yet its bank account is overdrawn and it cannot pay suppliers on time. Which concept explains this apparent contradiction?”,
+opts:[“The income statement must contain errors”,“Profit is an accruals-based accounting concept; it does not equal cash received — a profitable company can still be cash-poor”,“The bank has miscalculated the balance”,“HMRC has frozen the company’s funds”],ans:1,
+exp:“This is a critical distinction: <strong>profit ≠ cash</strong>. Profit is calculated on an accruals basis (revenue recognised when earned, not when received). A company can report profit while having cash tied up in receivables, inventory, or capital expenditure — causing a genuine cash shortage.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A company purchases a fleet of vehicles for £300,000. These are expected to be used for 5 years. How should this be classified on the balance sheet?”,
+opts:[“As current assets, because the company may sell them”,“As current liabilities, because payment is owed”,“As non-current (fixed) assets, because they provide economic benefits over more than one year”,“As equity, because they represent capital investment”],ans:2,
+exp:“Vehicles used for 5 years provide economic benefits over multiple accounting periods. They are therefore classified as <strong>non-current (fixed) assets</strong> on the balance sheet, and depreciated annually over their useful life.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“During the year, Harborne Ltd earned net profit of £150,000 and paid dividends of £60,000. By how much did shareholders’ equity increase, assuming no new shares were issued?”,
+opts:[“£150,000”,“£60,000”,“£90,000”,“£210,000”],ans:2,
+exp:“Equity increases by retained profit: £150,000 net profit − £60,000 dividends paid = <strong>£90,000</strong> added to retained earnings (equity). Dividends are distributions to owners, reducing the profit retained in the business.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Omega Trading Ltd files for administration despite reporting a net profit of £1.8 million in its most recent annual accounts. Which financial concept explains how this is possible?”,
+opts:[“The directors must have committed fraud”,“Profit and cash are different measures — the company had profit on paper but lacked cash to meet debts as they fell due”,“The accounts must contain errors”,“The auditor failed to sign off the accounts”],ans:1,
+exp:“A company is insolvent when it cannot pay its debts as they fall due — regardless of reported profit. <strong>Profit is an accounting construct</strong> (based on accruals) while solvency requires actual cash. Strong profit alongside cash-flow insolvency is a well-documented failure pattern.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Which of the following appears under current liabilities on a balance sheet?”,
+opts:[“A 10-year corporate bond”,“Property, plant and equipment”,“Trade payables (amounts owed to suppliers due within 12 months)”,“Share capital”],ans:2,
+exp:”<strong>Trade payables</strong> are amounts owed to suppliers, typically due within the next 12 months. They are a current liability. Long-term bonds are non-current liabilities; property is a non-current asset; share capital is equity.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“An analyst reviewing two competitors notices that one company discloses significant contingent liabilities and off-balance-sheet lease commitments in its notes, while the other discloses nothing similar. Why does this matter for comparison?”,
+opts:[“Notes are optional and therefore irrelevant to analysis”,“The notes reveal obligations and risks not visible in headline figures, making the two companies’ true risk profiles incomparable without them”,“The company without disclosures is clearly better managed”,“Notes only contain historical information with no analytical value”],ans:1,
+exp:”<strong>Notes to financial statements</strong> contain crucial information: accounting policies, contingent liabilities, off-balance-sheet obligations, related party transactions, and more. Ignoring them leads to a fundamentally incomplete and potentially misleading analysis.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A manufacturer charges £40,000 depreciation annually on machinery costing £200,000 with a 5-year useful life. Why is depreciation charged to the income statement each year rather than expensed immediately?”,
+opts:[“It inflates profit”,“Tax rules require it to be spread”,“The matching (accruals) principle requires the cost to be recognised in the periods that benefit from using the asset”,“Cash must be set aside each year to replace the asset”],ans:2,
+exp:“Under the <strong>matching (accruals) principle</strong>, expenses should be matched to the revenue they help generate. Since the machinery generates revenue over 5 years, its cost (£200,000) is allocated as £40,000 per year rather than charged entirely upfront.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A bank’s credit analyst is assessing whether a company can repay a £2 million 10-year loan. Which financial statement is MOST useful for assessing long-term solvency?”,
+opts:[“Cash flow statement — for daily cash position”,“Income statement — for profitability trends”,“Balance sheet — to compare total assets against total liabilities including long-term debt”,“Management accounts — for monthly KPIs”],ans:2,
+exp:“The <strong>balance sheet</strong> shows all assets relative to all liabilities — both current and long-term. It is the primary tool for assessing solvency: whether the company’s assets ultimately exceed its obligations, and how much long-term debt exists.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Why is inventory classified as a current asset on the balance sheet?”,
+opts:[“Because it is the most valuable asset”,“Because it is expected to be converted into cash within the normal operating cycle (usually within 12 months)”,“Because it must be revalued each month”,“Because accounting standards prohibit it from being a non-current asset”],ans:1,
+exp:”<strong>Current assets</strong> are those expected to be converted into cash within 12 months (or one operating cycle). Inventory is purchased, sold, and turned into receivables or cash within the normal business cycle — hence classified as current.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A construction company signs a contract worth £4 million in November. Work will span the next 18 months. Under the accruals principle, how should revenue be recognised?”,
+opts:[“All £4 million must be recognised in November when the contract was signed”,“Revenue should be recognised in proportion to the stage of completion in each accounting period”,“Revenue should only be recognised when all cash has been received”,“Revenue recognition is optional for construction firms”],ans:1,
+exp:“Under the <strong>accruals principle and revenue recognition standards (IFRS 15/FRS 102)</strong>, revenue is recognised as performance obligations are satisfied — i.e. in proportion to the work completed in each period, not when the contract is signed or cash received.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Thornton Ltd has total assets of £1,200,000 and total liabilities of £750,000. What is shareholders’ equity?”,
+opts:[“£1,950,000”,“£750,000”,“£450,000”,“£1,200,000”],ans:2,
+exp:“Using the accounting equation: <strong>Equity = Total Assets − Total Liabilities = £1,200,000 − £750,000 = £450,000</strong>. Equity is the residual interest — what belongs to shareholders after all creditors are settled.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A long-term investor wants to assess a company’s profitability, financial position, and cash generation simultaneously. Which approach provides the most complete picture?”,
+opts:[“Balance sheet alone — it contains everything”,“Income statement alone — profit is the key metric”,“Cash flow statement alone — cash is king”,“All three primary financial statements read together”],ans:3,
+exp:“The income statement shows <strong>performance</strong>, the balance sheet shows <strong>position</strong>, and the cash flow statement shows <strong>liquidity and cash generation</strong>. Only together do they provide a full picture. Reading any one in isolation risks missing critical information.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Which of the three sections of the cash flow statement would include receipts from a new bank loan?”,
+opts:[“Operating activities”,“Investing activities”,“Financing activities”,“Trading activities”],ans:2,
+exp:“Receipts from loans appear under <strong>Financing activities</strong> — this section records cash flows related to how the business is funded: new borrowings, loan repayments, share issuances, and dividends paid.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Ironbridge plc issues 400,000 new ordinary shares at £3 each. What is the combined effect on the balance sheet?”,
+opts:[“Cash decreases by £1.2 million; equity decreases by £1.2 million”,“Cash increases by £1.2 million; non-current liabilities increase by £1.2 million”,“Cash increases by £1.2 million; share capital (equity) increases by £1.2 million”,“No effect — shares are traded between investors”],ans:2,
+exp:“Issuing shares raises cash: <strong>Cash (current asset) increases by £1.2 million</strong>; and the corresponding equity entry increases: <strong>Share capital increases by £1.2 million</strong>. The accounting equation remains balanced. (Note: in a secondary market trade, the company does NOT receive the proceeds.)”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A dividend of £200,000 is paid to shareholders during the year. What is the effect on the balance sheet?”,
+opts:[“Non-current liabilities decrease by £200,000”,“Cash (current assets) decreases by £200,000 and retained earnings (equity) decreases by £200,000”,“Revenue decreases by £200,000”,“No effect — dividends are an internal transfer”],ans:1,
+exp:“Paying a dividend reduces <strong>cash</strong> (an asset) and reduces <strong>retained earnings</strong> (within equity) by the same amount. Dividends are distributions to shareholders, not an expense on the income statement — they reduce equity directly.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“The income statement is most useful for answering which question?”,
+opts:[“What assets does the company own right now?”,“How much cash did the company generate and spend?”,“How did the company perform — did it earn more than it spent — over the past year?”,“Who owns shares in the company?”],ans:2,
+exp:“The <strong>income statement</strong> (profit and loss account) covers a period of time and shows: Revenue − Cost of Sales = Gross Profit; then Gross Profit − Expenses = Operating Profit; then after interest and tax, Net Profit (or Loss). It answers the performance question.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A thriving retailer has excellent profit margins and is growing rapidly. However, its inventory turnover has slowed and its average debtor days have doubled to 90 days. What risk is most likely building?”,
+opts:[“The company will become overly profitable”,“A working capital crisis — cash is trapped in slow-moving stock and slow-paying customers despite good profits”,“The company needs to issue more shares”,“Depreciation charges will rise significantly”],ans:1,
+exp:“Despite strong profits, <strong>cash is being absorbed</strong> by growing inventory (unsold goods) and receivables (unpaid invoices). This classic over-trading or working capital crisis can lead to insolvency even while the income statement shows healthy profits.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“A company’s going concern assumption may no longer be appropriate. What is the accounting implication?”,
+opts:[“No change is required — the going concern basis is always used”,“Assets must be revalued at their liquidation (break-up) values and this uncertainty must be disclosed”,“The company must immediately file for insolvency”,“Revenue recognition must be deferred indefinitely”],ans:1,
+exp:“If the going concern assumption is doubtful, financial statements must reflect <strong>break-up values</strong> (what assets would realise if sold in a forced liquidation) rather than historical cost or carrying values. This and the uncertainty must be <strong>disclosed prominently</strong>.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Which of the following would NOT appear in the financial statements prepared on an accruals basis?”,
+opts:[“Revenue earned but not yet received in cash”,“Expenses incurred but not yet paid (accruals)”,“Only transactions where cash has physically been received and paid”,“Depreciation on non-current assets”],ans:2,
+exp:“Under the <strong>accruals basis</strong>, transactions are recorded when they occur — not when cash moves. Revenue is recognised when earned; expenses when incurred. A <strong>pure cash basis</strong> would only record actual cash received/paid, but UK financial statements use accruals.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“In Agency Theory applied to a publicly listed company, who are the "principals" and why does this matter for financial reporting?”,
+opts:[“The directors — because they run the company”,“The external auditors — because they verify the accounts”,“The shareholders — because they own the company but delegate management to directors, creating a potential conflict of interest”,“The employees — because they carry out the work”],ans:2,
+exp:”<strong>Shareholders are principals</strong> who own the company but cannot manage it daily — they delegate to directors (agents). This separation creates the <strong>agency problem</strong>: directors may act in their own interests. Financial reporting and audit exist partly to make directors accountable to shareholders.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“An auditor concludes that a company’s financial statements are so materially misstated that they fundamentally do not show a true and fair view. Which type of audit opinion is issued?”,
+opts:[“Unqualified (clean) opinion”,“Qualified opinion — except for a specific matter”,“Adverse opinion — the statements do not give a true and fair view”,“Disclaimer of opinion — the auditor cannot form any opinion”],ans:2,
+exp:“An <strong>adverse opinion</strong> is the most serious form of audit opinion short of a disclaimer. It means the auditor has concluded that the financial statements contain material misstatements that are pervasive — they fundamentally misrepresent the company’s position.”},
+
+{topic:“statements”,group:“Financial Ratios & Calculations”,
+q:“A company has total assets of £2,000,000, non-current liabilities of £600,000, and current liabilities of £200,000. What is total equity?”,
+opts:[“£1,800,000”,“£1,400,000”,“£1,200,000”,“£800,000”],ans:2,
+exp:“Total liabilities = £600,000 + £200,000 = £800,000. Equity = Total Assets − Total Liabilities = £2,000,000 − £800,000 = <strong>£1,200,000</strong>. The accounting equation (Assets = Liabilities + Equity) always holds.”},
+
+{topic:“statements”,group:“Financial Statements”,
+q:“Which of these items would be classified under non-current liabilities on a balance sheet?”,
+opts:[“Trade payables due within 30 days”,“A 7-year bank loan”,“An accrual for electricity used in December”,“Corporation tax payable within 9 months”],ans:1,
+exp:“A <strong>7-year bank loan</strong> is repayable over more than 12 months — it is a non-current liability. Trade payables, accruals, and tax payable within 9 months are all current liabilities (due within 12 months).”},
+
+// ══════════════════════════════════════════════════
+// GROUP 3 · INVESTMENT APPRAISAL (51–70)
+// ══════════════════════════════════════════════════
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A project generates cash inflows with a total present value of £180,000, against an initial investment of £140,000. What does the NPV indicate about this project?”,
+opts:[“NPV = −£40,000 — the project destroys value”,“NPV = £180,000 — the project returns the full present value”,“NPV = £40,000 — the project adds £40,000 of value above the required return”,“NPV = £320,000 — the total project value”],ans:2,
+exp:“NPV = Total PV of inflows − Initial investment = £180,000 − £140,000 = <strong>£40,000</strong>. A positive NPV means the project generates returns above the required rate — it adds £40,000 of net present value to the business.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A project is evaluated using a 10% discount rate and shows NPV = £22,000. A risk review suggests 14% is more appropriate. What will happen to the NPV, and why?”,
+opts:[“NPV will increase because a higher rate boosts future values”,“NPV will stay at £22,000 — the rate does not affect NPV”,“NPV will fall, possibly turning negative, because higher rates reduce the present value of future cash inflows more aggressively”,“NPV doubles because the rate doubles from the standard 7%”],ans:2,
+exp:“A higher discount rate means future cash flows are discounted more heavily — their present value falls. If the rate rises from 10% to 14%, <strong>NPV will fall</strong> and could turn negative if the additional discounting eliminates the surplus over the initial investment.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“Investment = £8,000. Total Present Value of projected inflows = £11,500. What is the NPV?”,
+opts:[“£19,500”,“−£3,500”,“£3,500”,“£8,000”],ans:2,
+exp:“NPV = PV of inflows − Initial investment = £11,500 − £8,000 = <strong>£3,500</strong>. The positive NPV confirms the project adds value. If NPV were negative, the project would be expected to destroy value at the given discount rate.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A finance director argues the payback period is sufficient for appraising all capital projects. A colleague disagrees. What is the STRONGEST criticism of relying solely on payback?”,
+opts:[“It is too complex for non-financial managers to understand”,“It ignores all cash flows that occur after the payback point and does not account for the time value of money — making it an incomplete measure of value”,“It requires a discount rate that is hard to estimate”,“It focuses too much on long-term value creation”],ans:1,
+exp:“Payback’s two fundamental weaknesses: <strong>(1)</strong> it ignores cash flows after the payback date — a project with huge later inflows could be incorrectly rejected; <strong>(2)</strong> it treats £1 received in Year 1 the same as £1 in Year 5 — ignoring the time value of money.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“Project Apex has NPV of £95,000 and a payback period of 4 years. Project Base has NPV of £60,000 and a payback period of 2 years. The company has no capital constraints. Which project should be chosen and why?”,
+opts:[“Project Base — shorter payback means lower risk always”,“Project Apex — higher NPV means greater value creation for shareholders”,“Either — they are equivalent investments”,“Project Base — 2 years is always preferable to 4 years regardless of NPV”],ans:1,
+exp:“NPV is the theoretically superior decision rule. <strong>Project Apex</strong> should be chosen because its higher NPV (£95,000 vs £60,000) means it creates more wealth for the firm. Payback is useful for risk assessment but should not override NPV when funds are available.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“An investment appraisal team assumes raw material costs will fall by 12% over the project life. In reality, raw material costs rise by 8%. What is the most likely consequence for the project’s actual NPV versus the calculated NPV?”,
+opts:[“Actual NPV will be higher than calculated because cost rises boost cash flows”,“Actual NPV will be lower than calculated — the wrong cost assumption inflated projected cash inflows”,“NPV is unaffected by cost assumptions”,“Actual NPV will equal the calculated NPV because other factors compensate”],ans:1,
+exp:“The assumption of falling costs produced <strong>artificially high projected cash flows</strong>. When costs actually rise instead, real cash inflows are lower than projected, causing actual NPV to fall — possibly turning a positive NPV project into a loss-making one.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“The discount rate used in an NPV calculation represents:”,
+opts:[“The rate of inflation in the economy”,“The corporate tax rate applied to project cash flows”,“The minimum required rate of return reflecting the opportunity cost of capital and project risk”,“The payback period expressed as a decimal”],ans:2,
+exp:“The discount rate reflects the <strong>opportunity cost of capital</strong> — what investors could earn elsewhere at the same risk level. It compensates for both the time value of money and the risk of the project. Often approximated by the company’s Weighted Average Cost of Capital (WACC).”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“Investment = £18,000. Year 1 inflow = £7,000; Year 2 inflow = £7,000; Year 3 inflow = £6,000. In which year is payback achieved?”,
+opts:[“Year 1”,“Year 2”,“Year 3”,“Year 4”],ans:2,
+exp:“Cumulative inflows: Year 1 = £7,000; Year 2 = £14,000; Year 3 = £20,000. The initial £18,000 is recovered during <strong>Year 3</strong> (£18,000 − £14,000 = £4,000 still needed into Year 3, which is less than the £6,000 Year 3 inflow).”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A project has a positive NPV of £75,000 but the board decides not to proceed. Which of the following is NOT a legitimate reason for rejecting a positive-NPV project?”,
+opts:[“The project is strategically misaligned with the company’s five-year plan”,“Capital rationing means funds must be allocated to higher-NPV alternatives”,“The positive NPV itself represents value creation for shareholders”,“The project carries regulatory or reputational risk the board considers unacceptable”],ans:2,
+exp:“The fact that a project creates positive value is a <strong>reason to ACCEPT it</strong>, not reject it. Strategic misalignment, capital rationing, and unacceptable risk are all legitimate grounds for rejection — but "the project creates value" is never a reason to say no.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“NPV is widely considered superior to payback as an investment appraisal method. Which TWO properties give it this advantage?”,
+opts:[“It is simpler to calculate and requires no discount rate”,“It considers all project cash flows across the entire project life AND accounts for the time value of money by discounting future flows”,“It uses accounting profit rather than cash flows, making it more consistent with reporting”,“It focuses on short-term recovery of investment”],ans:1,
+exp:“NPV’s superiority rests on two pillars: <strong>(1) it considers ALL cash flows</strong> over the project’s life (not just those before payback); <strong>(2) it discounts future cash flows</strong> to their present value, properly reflecting the time value of money and risk.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A project’s NPV is exactly zero at the company’s 9% discount rate. What conclusion should management draw?”,
+opts:[“The project should be automatically rejected — zero NPV means no return”,“The project earns exactly the required 9% rate of return — it neither creates nor destroys value beyond the cost of capital”,“The discount rate must be wrong — NPV should always be positive”,“The project is loss-making and should be abandoned immediately”],ans:1,
+exp:“NPV = 0 means the project’s discounted cash flows exactly equal the initial investment. The project <strong>earns exactly the cost of capital</strong> — no more, no less. It may be accepted (particularly if strategic benefits exist) but does not add surplus value.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“During NPV analysis, the question "what if sales revenue falls by 20% — does NPV turn negative?" is an example of which analytical technique?”,
+opts:[“Ratio analysis”,“Benchmarking”,“Sensitivity analysis — testing how NPV changes if key assumptions are varied”,“Payback analysis”],ans:2,
+exp:”<strong>Sensitivity analysis</strong> varies one input assumption at a time to test how much it can change before NPV turns negative. It reveals which assumptions the project is most sensitive to, enabling managers to focus attention and monitoring on the highest-impact variables.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A company borrows to invest in new equipment. A director claims "once we buy the equipment, financial risk returns to normal." Why is this reasoning flawed?”,
+opts:[“Buying equipment reduces financial risk because assets increase”,“The director is correct — assets offset the liability perfectly”,“Debt creates a fixed interest obligation that must be paid regardless of profit; this permanent obligation is the additional financial risk — it does not disappear when the asset is purchased”,“Equipment always depreciates, so the risk is temporary”],ans:2,
+exp:“Taking on debt creates a <strong>permanent fixed interest obligation</strong> for the life of the loan. This must be paid in good years and bad years alike. The equipment purchase is separate — the financial risk of the interest commitment remains for as long as the debt exists.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“The Internal Rate of Return (IRR) of a project is 14% and the company’s cost of capital is 10%. What does this indicate?”,
+opts:[“The project should be rejected — IRR exceeds the cost of capital”,“The project earns a higher return (14%) than required (10%) — it should be accepted”,“IRR below 14% means the project is risky”,“The project’s NPV is negative”],ans:1,
+exp:“IRR is the discount rate at which NPV = 0. If IRR (14%) <strong>exceeds the cost of capital</strong> (10%), the project generates returns above the required minimum — it has a positive NPV at 10% and should be accepted.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“Which investment appraisal method is solely focused on measuring how quickly the initial capital outlay is recovered from project cash inflows?”,
+opts:[“Net Present Value (NPV)”,“Internal Rate of Return (IRR)”,“Payback period”,“Return on Capital Employed (ROCE)”],ans:2,
+exp:“The <strong>payback period</strong> measures the time taken to recover the initial investment from cumulative cash inflows. It does not measure total profitability or account for the time value of money — it is a simple risk and liquidity measure.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“£1,000 received today is worth more than £1,000 received in 3 years. Which concept does this illustrate, and why is it central to NPV analysis?”,
+opts:[“Depreciation — assets lose value over time”,“The time value of money — money now can be invested to earn returns; future money must be discounted to compare fairly with today’s investment”,“Inflation — prices always rise over time”,“Opportunity cost — investing in one project means forgoing another”],ans:1,
+exp:“The <strong>time value of money</strong> underpins all discounted cash flow analysis. Money available today can be invested to earn a return. £1,000 in 3 years is therefore worth less than £1,000 now. NPV discounts all future cash flows back to "today’s money" to enable a fair comparison with the current investment outlay.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“A project with a 7-year payback period is considered riskier than one with a 2-year payback period. Why?”,
+opts:[“Longer projects always have negative NPV”,“The 7-year project always has higher operating costs”,“The further into the future expected cash flows are, the greater the uncertainty — market conditions, technology, competition, and management could all change over 7 years”,“The 7-year project has a higher discount rate by definition”],ans:2,
+exp:”<strong>Time = uncertainty</strong>. Cash flows expected 6 or 7 years from now depend on assumptions about the economy, market, technology, regulation and management that become increasingly unreliable the further into the future they are projected. Short payback periods therefore reduce exposure to this uncertainty.”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“An investment of £25,000 generates inflows of £9,000 in Year 1, £9,000 in Year 2, and £8,000 in Year 3. What is the total undiscounted cash inflow across the three years?”,
+opts:[“£25,000”,“£26,000”,“£27,000”,“£17,000”],ans:1,
+exp:“Total undiscounted inflows = £9,000 + £9,000 + £8,000 = <strong>£26,000</strong>. The project recovers the £25,000 investment plus a £1,000 surplus on an undiscounted basis. However, the true value creation should be assessed using NPV (discounted flows).”},
+
+{topic:“investment”,group:“Investment Appraisal: NPV & Payback”,
+q:“An investment requires £1,100,000 of capital employed and is expected to generate operating profit of £99,000 per year. The company’s minimum acceptable ROCE is 10%. Should the project be accepted on ROCE grounds?”,
+opts:[“Yes — ROCE is 11%, which exceeds the 10% threshold”,“No — ROCE is 9.09%, which falls below the 10% minimum”,“Yes — any positive ROCE means the project is acceptable”,“No — ROCE cannot be used for project appraisal”],ans:1,
+exp:“ROCE = £99,000 ÷ £1,100,000 × 100 = <strong>9.09%</strong>. Since 9.09% is below the minimum required ROCE of 10%, the project <strong>should be rejected</strong> on ROCE grounds — it does not generate sufficient return per pound of capital employed.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 4 · ESG (71–85)
+// ══════════════════════════════════════════════════
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A company discloses its total carbon emissions, percentage of renewable energy used, and targets for reducing water consumption. Which ESG pillar do these disclosures primarily fall under?”,
+opts:[“Governance”,“Social”,“Environmental”,“Financial”],ans:2,
+exp:“Carbon emissions, renewable energy, and water consumption are all <strong>Environmental</strong> disclosures. The Environmental pillar covers a company’s impact on the natural world: climate change, biodiversity, resource use, and pollution.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A supermarket chain publishes data on its supplier code of conduct, gender pay gap, employee wellbeing programmes, and community investment. Which ESG pillar is being primarily addressed?”,
+opts:[“Environmental”,“Social”,“Governance”,“Financial”],ans:1,
+exp:“Employee wellbeing, pay equality, supplier standards, and community investment are all <strong>Social</strong> pillar topics. The Social dimension covers how a company manages relationships with employees, suppliers, customers, and the communities it operates in.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A listed company publishes a report describing its newly established Audit Committee of independent non-executive directors, formal Board evaluation process, and executive remuneration linked to long-term performance targets. Which ESG pillar is primarily being demonstrated?”,
+opts:[“Environmental”,“Social”,“Governance”,“Financial”],ans:2,
+exp:“Audit committees, board independence, board evaluations, and executive pay structures are all <strong>Governance</strong> matters — how the company is controlled, directed, and held accountable. Strong governance reduces the risk of management acting against shareholders’ interests.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“Which of the following is a commonly cited criticism of ESG reporting by institutional investors?”,
+opts:[“ESG guarantees higher investment returns and so creates unfair advantages”,“Companies sometimes make ESG claims without substantive supporting evidence or action — a practice known as greenwashing”,“ESG reporting is fully standardised globally, removing analyst judgement”,“ESG always reduces short-term profits, deterring investment”],ans:1,
+exp:”<strong>Greenwashing</strong> — publishing impressive ESG claims without genuine underlying change — is the most significant criticism of voluntary ESG reporting. Without independent verification, investors cannot distinguish genuine performers from those using ESG as a marketing tool.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“Independent third-party verification of a company’s published ESG data is called ESG assurance. Its PRIMARY function is to:”,
+opts:[“Replace the external financial audit”,“Increase the company’s share price automatically”,“Verify that ESG disclosures are accurate, complete and not misleading — reducing greenwashing risk”,“Ensure the company achieves its ESG targets”],ans:2,
+exp:”<strong>ESG assurance</strong> provides independent verification that published ESG information is accurate and reliable — similar in principle to a financial audit. Its primary purpose is to improve credibility and reduce the risk that companies make false or misleading claims about their environmental, social, or governance performance.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“Which international framework was specifically designed to help businesses disclose the financial risks and opportunities arising from climate change?”,
+opts:[“SASB (Sustainability Accounting Standards Board)”,“GRI (Global Reporting Initiative)”,“UN Sustainable Development Goals”,“TCFD (Task Force on Climate-related Financial Disclosures)”],ans:3,
+exp:“The <strong>TCFD</strong>, established by the Financial Stability Board, focuses specifically on <strong>climate-related financial risks and opportunities</strong>. It asks companies to disclose governance, strategy, risk management, and metrics related to climate — helping investors assess financial exposure to climate change.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A large pension fund announces it will exclude from its portfolio any company that cannot demonstrate a credible plan to achieve net-zero carbon emissions by 2040. What does this illustrate about the relationship between ESG and capital markets?”,
+opts:[“ESG concerns are irrelevant to investment decisions”,“ESG performance is increasingly influencing capital allocation — companies with poor ESG performance may face higher cost of capital or exclusion from institutional portfolios”,“ESG only matters to retail investors, not institutional investors”,“Net-zero commitments always lead to higher profits”],ans:1,
+exp:“Institutional investors managing trillions in assets are increasingly <strong>integrating ESG factors into investment decisions</strong>. Companies with poor ESG performance risk being excluded from major portfolios, increasing their cost of capital — demonstrating that ESG is financially material, not just ethical.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“ESG is best described as a framework that:”,
+opts:[“Is purely ethical with no connection to financial performance”,“Replaces conventional financial reporting for all companies”,“Links corporate responsibility across environmental, social, and governance dimensions with long-term financial risk and performance”,“Is mandatory under UK law for all companies regardless of size”],ans:2,
+exp:“ESG is best understood as a <strong>bridge between responsibility and finance</strong>. It recognises that how a company manages its environmental impact, treats stakeholders, and governs itself has material consequences for long-term financial performance and risk.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“Which of the following is NOT one of the three core principles of the ESG framework?”,
+opts:[“Environmental sustainability”,“Social responsibility”,“Globalisation strategy”,“Governance integrity”],ans:2,
+exp:“The three pillars of ESG are <strong>Environmental</strong> (impact on the natural world), <strong>Social</strong> (impact on people and communities), and <strong>Governance</strong> (how the company is run and controlled). <strong>Globalisation</strong> is an economic concept — not an ESG pillar.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A mining company publishes impressive ESG reports claiming to be an "environmental leader" but simultaneously faces criminal charges for illegal dumping of toxic waste. What ESG concept does this illustrate?”,
+opts:[“ESG assurance”,“TCFD disclosure”,“Greenwashing — making ESG claims that are not supported by actual performance”,“Governance strengthening”],ans:2,
+exp:”<strong>Greenwashing</strong> occurs when a company portrays itself as environmentally or socially responsible through its communications while its actual behaviour contradicts these claims. It undermines the credibility of ESG as a whole and can mislead investors who rely on ESG disclosures.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A company’s anti-bribery and corruption policy, whistleblowing hotline, and audit committee structure all fall primarily under which ESG pillar?”,
+opts:[“Environmental”,“Social”,“Governance”,“Financial”],ans:2,
+exp:“Anti-corruption policies, whistleblowing mechanisms, and board oversight structures are all <strong>Governance</strong> topics. Governance covers how a company is directed, controlled, and held accountable — including ethical business conduct, transparency, and management structures.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“Global ESG reporting is not yet standardised because:”,
+opts:[“No international organisations have attempted to develop ESG frameworks”,“ESG is considered too unimportant to warrant standardisation”,“Multiple competing frameworks (GRI, TCFD, SASB, ISSB) co-exist with varying adoption rates across jurisdictions”,“Financial regulators in all countries have actively blocked standardisation efforts”],ans:2,
+exp:“While significant progress has been made (particularly with the <strong>ISSB’s IFRS S1 and S2 standards</strong>), multiple frameworks still co-exist and adoption varies internationally. This fragmentation limits comparability — a company might look excellent under one framework and mediocre under another.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A company generates record profits but simultaneously has the highest carbon footprint in its sector, has been fined for labour violations, and has faced three board-level resignations over governance failures. What does this demonstrate?”,
+opts:[“Financial success and ESG performance are always linked — if profits are high, ESG must be strong”,“A company can be highly financially profitable while simultaneously performing poorly across all three ESG dimensions”,“ESG concerns are irrelevant when profits are strong”,“High profits indicate the company is sustainable in the long run”],ans:1,
+exp:”<strong>Financial performance and ESG performance are distinct and can diverge significantly</strong>. A company can generate high profits in the short term while causing substantial environmental harm, exploiting labour, and exhibiting poor governance — all of which represent long-term risks to financial sustainability.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“A fashion retailer switches its entire delivery fleet to electric vehicles, establishes a fund to offset all remaining carbon emissions, and publishes annual sustainability reports verified by an independent assurance firm. Which ESG dimension is being primarily addressed?”,
+opts:[“Governance”,“Social”,“Environmental”,“Financial”],ans:2,
+exp:“Electric vehicles, carbon offsetting, and emissions reporting are all <strong>Environmental</strong> ESG initiatives. They address the company’s direct impact on climate change and its commitment to reducing carbon emissions across its operations.”},
+
+{topic:“esg”,group:“ESG – Environmental, Social & Governance”,
+q:“The main purpose of independent assurance over a company’s ESG disclosures is to:”,
+opts:[“Increase the company’s short-term profitability”,“Market the company’s ESG credentials more effectively”,“Provide independent verification that ESG information published by the company is accurate, complete and not misleading”,“Replace the company’s internal ESG management processes”],ans:2,
+exp:“ESG assurance, like financial audit, exists to <strong>provide independent verification</strong> that published information can be trusted. It reduces greenwashing risk, builds investor confidence, and supports the credibility of ESG as a decision-useful framework for capital allocation.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 5 · FINANCIAL REGULATION & MARKETS (86–100)
+// ══════════════════════════════════════════════════
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“Following a wave of banking scandals in which customers were sold unsuitable high-risk investment products, the regulator introduced strict conduct rules for all firms selling investments. Which core principle of financial regulation does this BEST illustrate?”,
+opts:[“Eliminating all competition between financial firms”,“Guaranteeing profitability for compliant firms”,“Protecting consumers from harm caused by unsuitable or mis-sold financial products”,“Controlling the strategic direction of financial institutions”],ans:2,
+exp:”<strong>Consumer protection</strong> is a core regulatory objective. When markets fail to self-correct and consumers are systematically harmed — as in widespread mis-selling — regulators intervene by setting conduct standards that firms must meet to continue operating.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“In the UK, which body is responsible for supervising the conduct of financial firms and protecting retail consumers?”,
+opts:[“Bank of England — responsible for monetary policy”,“Prudential Regulation Authority (PRA) — responsible for systemic stability”,“Financial Conduct Authority (FCA) — responsible for market conduct and consumer protection”,“Companies House — responsible for company registration”],ans:2,
+exp:“The <strong>FCA</strong> supervises how financial firms behave towards customers, ensures markets function fairly, and enforces conduct standards. The PRA, as part of the Bank of England, supervises the prudential soundness of banks and insurers. These are distinct mandates.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“An app-based lending company uses machine learning to approve personal loans within minutes, without meeting borrowers in person. In the UK, which regulator would oversee this company’s lending activities?”,
+opts:[“Companies House — as it registers all UK businesses”,“HMRC — as income is generated”,“FCA — as consumer lending is a regulated activity regardless of technology used”,“PRA — as it supervises all lending organisations”],ans:2,
+exp:“Consumer lending is a <strong>regulated activity under FCA supervision</strong>. The key principle is that regulation follows the <strong>activity</strong> (lending), not the technology (machine learning/app). The company must be FCA-authorised to offer consumer credit.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“The Prudential Regulation Authority (PRA) is responsible for:”,
+opts:[“Setting accounting standards for UK companies”,“Investigating financial fraud in public companies”,“Supervising the financial soundness (prudential health) of banks, insurers and systemically important investment firms”,“Prosecuting directors who commit fraud”],ans:2,
+exp:“The <strong>PRA</strong>, part of the Bank of England, supervises the financial resilience of firms whose failure could destabilise the wider financial system. It focuses on capital adequacy, liquidity and risk management — distinct from the FCA’s conduct focus.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“A venture capital fund bought shares in a tech startup during its Series B funding round five years ago. It now wants to sell those shares. What type of market facilitates this sale, and what essential function does this market serve for the overall financial system?”,
+opts:[“Primary market — it raises new capital for the startup”,“Secondary market — it enables existing investors to sell their holdings, providing liquidity and price discovery that encourages future primary market investment”,“Derivatives market — for hedging the original investment risk”,“Money market — for short-term cash management”],ans:1,
+exp:“The <strong>secondary market</strong> allows investors to buy and sell existing securities between themselves. It does not channel new money to the company. Its critical function is <strong>liquidity</strong> — the ability to exit an investment — which gives investors confidence to participate in primary market fundraising in the first place.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“A new cryptocurrency exchange platform is launched in the UK. The founders argue they are not a bank and therefore do not need financial regulation. Why is this argument flawed?”,
+opts:[“Cryptocurrency exchanges are completely unregulated globally”,“UK financial regulation is activity-based — if the platform performs regulated activities (e.g. facilitating investment, custodying assets), it must be authorised regardless of its technology or legal structure”,“Only banks require FCA authorisation”,“The FCA only regulates activities involving physical currency”],ans:1,
+exp:“UK financial regulation is <strong>activity-based, not entity-based</strong>. If a platform performs activities defined as regulated (e.g. dealing in investments, custodying client assets), it requires FCA authorisation — regardless of whether it calls itself a "tech company", "exchange", or "platform".”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“A newly appointed director of a UK private limited company asks: "What legislation tells me my legal obligations regarding financial records, annual accounts, and audit?" What is the single most important piece of legislation to consult?”,
+opts:[“The Fraud Act 2006 — for understanding financial crime prevention”,“The Companies Act 2006 — the primary statute governing all UK company obligations including accounting and reporting”,“The Financial Services Act 2012 — for financial market obligations”,“The Public Interest Disclosure Act 1998 — for whistleblowing requirements”],ans:1,
+exp:“The <strong>Companies Act 2006</strong> is the cornerstone of UK company law. It sets out every company’s legal duties: maintaining proper accounting records, preparing annual financial statements, filing with Companies House, and (for larger companies) having accounts independently audited.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“Following two major bank failures caused by reckless lending and opaque reporting, a government task force recommends sweeping reforms. Which combination of measures would MOST effectively prevent a recurrence?”,
+opts:[“Reducing transparency requirements to simplify compliance”,“Higher leverage limits and less regulatory scrutiny”,“Mandatory enhanced disclosure, stronger capital requirements, and more rigorous regulatory oversight”,“Deregulation to allow market forces to self-correct”],ans:2,
+exp:“Financial crises are typically caused by a combination of <strong>excessive risk-taking, inadequate disclosure, and weak regulation</strong>. The most effective prevention combines: enhanced <strong>transparency</strong> (so risks are visible), stronger <strong>capital buffers</strong> (so firms can absorb losses), and more rigorous <strong>regulatory oversight</strong>.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“Post-Brexit, which statement correctly describes how the UK handles new IFRS standards issued by the IASB?”,
+opts:[“The UK automatically adopts all new IFRS standards the moment they are issued by the IASB”,“The UK has permanently rejected all IFRS standards and returned to pure UK GAAP”,“New IFRS standards must be assessed and formally endorsed through the UK Endorsement Board before taking effect in the UK”,“New IFRS standards apply only to UK banks, not to other listed companies”],ans:2,
+exp:“Since Brexit, the UK no longer auto-adopts new IFRS from the IASB. Instead, the <strong>UK Endorsement Board (UKEB)</strong> reviews each new standard and formally endorses (or modifies) it before it becomes effective in the UK. This means UK-adopted IFRS may diverge from global IFRS over time.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“Financial regulation cannot guarantee investment returns. Which statement BEST explains why this is the case?”,
+opts:[“Regulators have no authority over financial markets”,“Regulation focuses on fair, transparent and stable markets — but investment risk (and potential loss) is inherent in capital markets and cannot be eliminated by rules”,“Regulation is only concerned with preventing fraud, not protecting returns”,“Returns are guaranteed by the Financial Services Compensation Scheme (FSCS) for all investments”],ans:1,
+exp:”<strong>Regulation promotes fairness and stability</strong> — it cannot eliminate investment risk. Capital markets exist to allocate risk; investors accept the possibility of loss in exchange for potential return. The FSCS covers deposits and some investments up to limits, but does not guarantee positive returns.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:”‘Information asymmetry’ in financial reporting describes a situation where directors possess information about the company’s true financial position that is not available to shareholders or the public. Why does this make independent financial reporting important?”,
+opts:[“To help directors make better operational decisions”,“To ensure that shareholders and other stakeholders receive sufficiently accurate and complete information to make informed decisions, despite not having direct access to management information”,“To allow the government to collect more tax efficiently”,“To enable competitors to assess the company’s strategy”],ans:1,
+exp:”<strong>Information asymmetry</strong> is the core justification for mandatory financial reporting and independent audit. Shareholders cannot observe management’s daily decisions; published financial statements and their independent audit bridge this information gap and reduce the risk of directors exploiting their informational advantage.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“An economist is studying the relationship between UK wage growth, consumer price inflation, and employment levels over the past decade. Which UK official body would be the single best source for all three datasets?”,
+opts:[“The London Stock Exchange — for market-based economic indicators”,“SEC EDGAR — for listed company data”,“Companies House — for employer information”,“The Office for National Statistics (ONS) — the UK’s national statistical body publishing macroeconomic data”],ans:3,
+exp:“The <strong>ONS (Office for National Statistics)</strong> is the UK’s independent national statistics institute. It publishes authoritative data on: GDP, inflation (CPI, RPI), employment and earnings, population, and many other macroeconomic indicators — all in one authoritative, freely accessible source.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“A journalist investigating a listed company wants to check: (1) when the current Finance Director was appointed, (2) whether any charges are secured against the company’s assets, and (3) what the company filed as its most recent annual accounts. Which official register holds all three of these records?”,
+opts:[“The FCA’s register — for all listed company disclosures”,“Companies House — the UK’s registrar of companies holding statutory filings”,“The London Stock Exchange — for company announcements”,“HMRC — for tax and financial records”],ans:1,
+exp:”<strong>Companies House</strong> is the UK’s registrar of companies. It holds all statutory filings including: director appointments and resignations, charges registered against company assets, annual accounts, confirmation statements, and other mandatory disclosures — all publicly accessible.”},
+
+{topic:“regulation”,group:“Financial Regulation & Markets”,
+q:“An FCA investigation is MOST likely to be triggered by which of the following?”,
+opts:[“A company reporting declining profits for two consecutive years”,“A bank charging customers higher interest rates than a competitor”,“Evidence that a financial adviser systematically recommended unsuitable high-risk products to elderly retail investors”,“A company paying dividends lower than market average”],ans:2,
+exp:“The FCA’s core mandate is <strong>consumer protection and market integrity</strong>. Systematic mis-selling of unsuitable financial products to vulnerable consumers is precisely the type of conduct failure the FCA investigates and prosecutes. Declining profits and dividend levels are not regulatory concerns.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 6 · FRAUD, ETHICS & ACCOUNTABILITY (101–110)
+// ══════════════════════════════════════════════════
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“Cressey’s Fraud Triangle identifies three conditions that are typically present when fraud occurs. What are they?”,
+opts:[“Greed, deception, and concealment”,“Motive, means, and opportunity (management version)”,“Pressure (financial incentive), Opportunity (weak controls), and Rationalisation (self-justification)”,“Ambition, access, and anonymity”],ans:2,
+exp:”<strong>Cressey’s Fraud Triangle</strong>: (1) <strong>Pressure</strong> — a financial motive or personal problem; (2) <strong>Opportunity</strong> — weak internal controls that make fraud possible; (3) <strong>Rationalisation</strong> — the fraudster’s justification ("I deserve it", "I’ll pay it back"). All three typically co-exist in fraud cases.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“Priya is the Finance Director of a listed company. She knowingly signs off financial statements that overstate revenue, knowing this will enable the company to raise funds from investors who would not invest if they knew the true figures. Under the Fraud Act 2006, which offence has she most likely committed?”,
+opts:[“Fraud by negligent accounting — she was careless with the figures”,“Fraud by false representation — she knowingly presented false information to gain a financial advantage”,“Fraud by failing to disclose information — she withheld relevant data”,“None — directors cannot be held personally liable for company accounts”],ans:1,
+exp:”<strong>Fraud by false representation</strong> (Fraud Act 2006, s.2) occurs when someone dishonestly makes a false representation with intent to gain for themselves or another, or to cause loss. Knowingly signing false accounts to attract investor funds is a textbook example — the representation (the accounts) is false; it is knowingly made; it is designed to gain funds.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“Which internal control measure MOST directly removes the "Opportunity" element of the Fraud Triangle?”,
+opts:[“Setting high sales targets for staff”,“Paying staff above-market salaries to reduce financial pressure”,“Implementing segregation of duties so that no single employee controls all stages of a financial transaction”,“Publishing the company’s annual report online”],ans:2,
+exp:”<strong>Segregation of duties</strong> directly attacks the Opportunity element. When authorisation, recording, and custody of assets are split between different people, no single employee can commit and conceal fraud alone — collusion between multiple people would be required, significantly raising the barrier.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“In Agency Theory, shareholders are described as the "principals" in a listed company. What is the fundamental problem that arises from the principal-agent relationship?”,
+opts:[“Shareholders know more about the company than directors do”,“Directors may make decisions that benefit themselves rather than shareholders, since shareholders cannot directly monitor all management actions”,“Auditors are unable to review all financial transactions”,“Shareholders always agree with management decisions”],ans:1,
+exp:“The <strong>agency problem</strong> arises because principals (shareholders) delegate decision-making to agents (directors) but cannot fully observe their actions. This creates the risk of self-interested behaviour by agents — e.g. excessive executive pay, empire-building, or accounting manipulation. Financial reporting, audit, and governance structures exist to mitigate this.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“An auditor states: "We were unable to obtain sufficient appropriate audit evidence to provide a basis for an audit opinion on the financial statements." What type of opinion is this, and what does it mean?”,
+opts:[“Qualified opinion — the auditor has reservations on specific items”,“Adverse opinion — the accounts do not show a true and fair view”,“Emphasis of matter — an important issue is highlighted without modifying the opinion”,“Disclaimer of opinion — the auditor is unable to form any opinion at all due to lack of sufficient evidence”],ans:3,
+exp:“A <strong>disclaimer of opinion</strong> is the most extreme audit outcome. It is issued when auditors are unable to obtain sufficient appropriate evidence — perhaps because management refused access, records were destroyed, or uncertainties are so extreme that no reliable opinion can be formed. It signals fundamental problems with the audit.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“An adverse audit opinion differs from a qualified opinion in what key respect?”,
+opts:[“A qualified opinion relates only to cash; adverse covers all statements”,“An adverse opinion is issued when issues are limited and specific; qualified when issues are pervasive”,“A qualified opinion says "except for" specific issues the accounts are fair; an adverse opinion says the accounts as a whole do NOT give a true and fair view”,“There is no practical difference between the two opinions”],ans:2,
+exp:”<strong>Qualified opinion</strong>: "Except for the matter described, the financial statements give a true and fair view." — the misstatement is material but not pervasive. <strong>Adverse opinion</strong>: the misstatements are so <strong>pervasive</strong> that the financial statements as a whole do not give a true and fair view. An adverse opinion is far more serious.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:”"Rationalisation" in the context of the Fraud Triangle means:”,
+opts:[“The fraudster calculates the expected financial gain from the fraud”,“The fraudster constructs a psychological justification that makes the fraud feel morally acceptable to themselves”,“A detective’s process for reconstructing how a fraud was committed”,“The mathematical analysis used to detect fraudulent transactions”],ans:1,
+exp:”<strong>Rationalisation</strong> is the psychological self-justification that allows a fraudster to reconcile dishonest behaviour with their self-image as a decent person. Common rationalisations: "The company owes me after all I’ve done", "I’ll pay it back before anyone notices", "Everyone in this industry does this." Removing opportunity is more effective than trying to change rationalisation.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“The primary purpose of an external financial audit is:”,
+opts:[“To prepare the company’s financial statements on management’s behalf”,“To certify that the company is financially stable and will not fail”,“To provide independent assurance that financial statements present a true and fair view in accordance with applicable accounting standards”,“To advise management on improving internal controls only”],ans:2,
+exp:“An <strong>external audit</strong> provides an independent opinion — not a guarantee — that financial statements are free from material misstatement (due to error or fraud) and comply with accounting standards. Auditors do not prepare accounts (that is management’s job) and do not certify financial health.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“Which combination of internal controls most effectively prevents a single employee from committing and concealing financial fraud?”,
+opts:[“A single trusted senior employee overseeing all financial approvals”,“Verbal-only authorisation to speed up payment processes”,“Segregation of duties combined with independent reconciliations and management review”,“Reducing the number of financial records maintained”],ans:2,
+exp:“The most effective fraud prevention combines: <strong>(1) Segregation of duties</strong> — different people authorise, record, and handle cash; <strong>(2) Independent reconciliations</strong> — bank statements checked against ledgers by someone not involved in transactions; <strong>(3) Management review</strong> — oversight that makes unusual patterns visible.”},
+
+{topic:“fraud”,group:“Fraud, Ethics & Accountability”,
+q:“In a major UK corporate fraud case, a Finance Director created fictitious bank statements showing cash balances the company did not have. The external auditors accepted these documents without independently verifying balances with the banks. Using the concept of the accountability chain, which two links failed?”,
+opts:[“Preparation and Disclosure — the FD prepared false data and it was wrongly disclosed in the accounts”,“Legal Duty and Audit — the FD breached their legal duty to prepare accurate records, and the audit failed by not independently verifying the evidence”,“Consequences and Enforcement — regulators failed to investigate quickly enough”,“Shareholders and Management — shareholders failed to scrutinise management adequately”],ans:1,
+exp:“The <strong>accountability chain</strong> runs from preparation through disclosure, audit, legal duty, and consequences. Here: <strong>Legal duty failed</strong> — the FD had a legal obligation to prepare accurate accounts but deliberately falsified them; <strong>Audit failed</strong> — the auditor accepted management’s documents without independent bank confirmation, a fundamental audit procedure.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 7 · FINTECH & DIGITAL FINANCE (111–125)
+// ══════════════════════════════════════════════════
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A technology startup claims its payment record system is "unhackable" because records are simultaneously stored and verified across thousands of independent computers globally, with no single organisation controlling the ledger. Which technology underpins this architecture?”,
+opts:[“A centralised cloud server with strong encryption”,“Blockchain — a distributed ledger maintained across multiple independent nodes with no single point of control”,“Traditional relational database technology with multi-factor authentication”,“A government-managed digital registry”],ans:1,
+exp:”<strong>Blockchain</strong> is a distributed ledger where copies of the transaction record are maintained simultaneously across a network of independent nodes. Because no single party controls the ledger, altering records would require consensus from the majority of the network — making manipulation extremely difficult.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“In 2023, an investigator attempts to alter a 2020 transaction on a blockchain network. Despite gaining access to one computer in the network, the alteration is automatically rejected. Which specific blockchain property prevented the change?”,
+opts:[“Encryption of individual transaction files”,“Immutability — once validated, blockchain records are cryptographically linked to all subsequent blocks, making retrospective changes detectable and rejectable by the network”,“Centralised admin controls that prevent external editing”,“The absence of an internet connection on that particular node”],ans:1,
+exp:”<strong>Immutability</strong> means that once a transaction is recorded and validated, it is permanently embedded. Each new block contains a cryptographic hash of the previous block — altering an old transaction would change its hash, breaking the chain and alerting the entire network. This makes blockchain records extremely tamper-resistant.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A retired teacher lends £8,000 of her savings to a small bakery business through an online platform that matched them based on her risk appetite and the bakery’s credit profile. She earns 6.5% annual interest. The platform never held her money in a bank account. Which financial model describes this transaction?”,
+opts:[“Traditional bank intermediation”,“Equity crowdfunding — she now owns shares in the bakery”,“Peer-to-peer (P2P) lending — direct lending between individuals via a digital matching platform”,“Invoice financing — using the bakery’s invoices as collateral”],ans:2,
+exp:”<strong>P2P (peer-to-peer) lending</strong> connects individual lenders directly with borrowers through a digital platform — no bank intermediary takes a deposit or re-lends the money. The platform acts as a marketplace, handling matching and administrative functions while the lender bears the credit risk.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A restaurant group needs growth capital but does not want to borrow from a bank or dilute existing shareholders with new equity. Instead, it issues a 4-year bond at 7% annual interest to institutional investors. What is the KEY financial risk this approach introduces compared to equity financing?”,
+opts:[“The restaurant loses ownership control completely”,“Investors can demand repayment at any time without notice”,“A fixed interest obligation is created — 7% must be paid annually regardless of whether the business is profitable”,“The bond automatically converts to equity if profits fall”],ans:2,
+exp:“Unlike equity (which has no mandatory payments), a bond creates a <strong>fixed interest obligation</strong> that must be paid regardless of trading performance. If the restaurant has a poor year, it must still pay 7% interest. This is the fundamental financial risk difference between debt and equity financing.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A loan agreement stored on a blockchain automatically releases funds to a borrower the moment they upload verified proof of the required insurance certificate. No human approval is needed. What type of technology is enabling this automated execution?”,
+opts:[“Telematics underwriting”,“Manual ledger reconciliation”,“Buy Now Pay Later (BNPL) processing”,“A smart contract — self-executing code that runs automatically when predefined conditions are met”],ans:3,
+exp:”<strong>Smart contracts</strong> are programs stored on a blockchain that automatically execute agreed actions when specified conditions are satisfied — without any human intermediary. In this example, proof of insurance = the condition; fund release = the automatic execution. They reduce delay, cost, and counterparty risk.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A young borrower with no formal credit history but a consistent record of managing a profitable online business through digital transactions applies for a loan. A traditional bank declines; a FinTech lender approves within hours. What MOST likely explains the difference?”,
+opts:[“FinTech lenders do not conduct any credit assessment”,“FinTech lenders are not legally required to assess creditworthiness”,“FinTech lenders use alternative data (digital transaction history, business performance data, online reviews) and algorithmic assessment — rather than traditional credit scores alone — to evaluate creditworthiness”,“FinTech lenders charge higher interest rates to compensate for not assessing risk”],ans:2,
+exp:”<strong>P2P and FinTech lenders use alternative data</strong> — digital transaction history, cash flow patterns, platform performance data — alongside machine learning algorithms. This enables credit decisions for borrowers who are "thin-file" in traditional systems but demonstrably creditworthy through their digital footprint.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A user opens a personal finance app and can see all their current accounts, savings, credit cards, and mortgage in one dashboard. The app connected to their banks automatically using secure, authorised programming interfaces — the user did not share passwords. Which UK framework made this possible?”,
+opts:[“GDPR — data protection regulation requiring consent”,“Basel III — international banking capital standards”,“Open Banking — a regulatory framework enabling authorised third parties to access financial data via secure APIs with explicit customer consent”,“Anti-money laundering (AML) regulations requiring data sharing”],ans:2,
+exp:”<strong>Open Banking</strong> (implemented under the Payment Services Directive 2 in the UK) allows regulated third-party providers to access customer account data via <strong>secure APIs</strong>, with the customer’s <strong>explicit consent</strong>. This enabled the aggregation, budgeting, and payment initiation services now widely available through FinTech apps.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“Before digital finance platforms, entrepreneurs in rural areas or from non-traditional backgrounds frequently struggled to access growth capital because local banks applied conservative criteria and venture capital was inaccessible. Which characteristic of collaborative finance platforms MOST directly addresses this historical barrier?”,
+opts:[“Collaborative platforms guarantee loan approval for all applicants”,“They require less collateral than traditional banks because they don’t assess credit risk”,“They significantly lower barriers to accessing capital by connecting entrepreneurs with large pools of investors nationwide, regardless of geography”,“They provide free financial advice alongside funding”],ans:2,
+exp:”<strong>Collaborative finance platforms democratise access to capital</strong>. By connecting entrepreneurs with thousands of potential investors via digital channels, they remove the geographical constraints and gatekeeping of traditional banking — enabling businesses that would previously have been rejected to access funding from dispersed sources.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“Buy Now Pay Later (BNPL) services allow consumers to purchase goods immediately and pay in instalments. Which regulatory concern has driven increased FCA scrutiny of BNPL products?”,
+opts:[“BNPL causes inflation by increasing consumer spending”,“BNPL eliminates competition from traditional credit card providers”,“Some BNPL users accumulate debt without fully understanding the financial commitment, creating consumer harm risk”,“BNPL providers evade all financial regulation by calling themselves technology companies”],ans:2,
+exp:“The FCA has moved to regulate BNPL more strictly because <strong>consumers sometimes do not fully understand the credit obligation they are entering</strong> — particularly younger users. Missed payments can result in debt, damage to credit scores, and collection action. Consumer protection from harm is the primary regulatory concern.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“What is the single most important technological enabler that has allowed financial services to shift from a branch-based, intermediary-led model to a platform-based, peer-to-peer model?”,
+opts:[“The introduction of the ATM in the 1960s”,“Physical proximity of customers to financial institutions”,“Digital connectivity — the internet, mobile technology, and secure API infrastructure — enabling scalable, low-cost financial services without physical presence”,“Government deregulation of banking in the 1980s”],ans:2,
+exp:”<strong>Digital technology</strong> — particularly the internet, smartphones, cloud computing, and secure APIs — is the foundational enabler. It allows financial platforms to serve millions of customers simultaneously without physical branches, match borrowers with lenders in real time, and process transactions at near-zero marginal cost.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A company builds an AI-powered robo-adviser that automatically allocates retail customers’ savings into investment portfolios based on their risk profile, rebalancing automatically each week. What regulatory status would this company almost certainly need in the UK?”,
+opts:[“No authorisation is needed as the service is automated”,“HMRC registration as a financial intermediary”,“Companies House registration only”,“FCA authorisation — providing investment advice and managing client money are regulated activities regardless of whether they are performed by a human or an algorithm”],ans:3,
+exp:”<strong>Investment advice and portfolio management are regulated activities</strong> under FSMA 2000. The FCA regulates based on the <strong>activity performed</strong>, not who (or what) performs it. An automated robo-adviser performs the same regulated function as a human IFA — it requires the same FCA authorisation.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A sole trader with limited credit history approaches a traditional bank for a £20,000 business loan and is declined. She then applies through a P2P business lending platform and receives approval within 48 hours. What MOST likely explains the faster, more flexible outcome?”,
+opts:[“P2P platforms do not assess creditworthiness and therefore approve everyone”,“P2P platforms are legally exempt from responsible lending obligations”,“P2P platforms use algorithmic assessment of alternative data — business transaction history, cash flows, online presence — rather than relying solely on traditional credit files and collateral requirements”,“P2P platforms charge no interest and therefore have nothing to lose from approving any loan”],ans:2,
+exp:“P2P lending platforms use <strong>algorithmic credit assessment and alternative data sources</strong> (bank transaction patterns, business performance, digital footprint) to make faster, more nuanced credit decisions. This allows them to approve creditworthy borrowers who are poorly served by traditional credit scoring systems that focus on historical credit files and collateral.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“A finance team of 25 people currently uses spreadsheets emailed between departments for monthly management accounts. Version control errors, data duplication, and a 3-week close process are causing significant problems. Which technology solution most directly addresses these specific issues?”,
+opts:[“Installing faster computers for each team member”,“Hiring more accountants to reconcile the spreadsheets”,“Implementing a cloud-based financial management platform with centralised, real-time data accessible to all authorised users simultaneously”,“Switching from monthly to quarterly reporting to reduce workload”],ans:2,
+exp:“A <strong>cloud-based financial management system</strong> (e.g. a cloud ERP) centralises data in a single authoritative source, eliminates version control problems, enables simultaneous multi-user access, and automates consolidation — directly addressing all the problems described and significantly reducing close time.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“After deploying robotic process automation (RPA) for invoice processing, a company’s accounts payable team reduces processing time from 6 days to 4 hours and reduces error rates by 92%. Which primary category of operational benefit does this demonstrate?”,
+opts:[“Strategic benefit — better market positioning”,“Revenue benefit — higher sales through faster processing”,“Efficiency and accuracy improvement — reduced processing time and error rates in high-volume repetitive tasks”,“Governance benefit — stronger board oversight of payments”],ans:2,
+exp:”<strong>Automation of repetitive, rules-based processes</strong> like invoice processing produces two primary benefits: <strong>speed</strong> (6 days → 4 hours) and <strong>accuracy</strong> (92% error reduction). This frees human finance staff for higher-value analytical work while reducing operational cost and risk of error.”},
+
+{topic:“fintech”,group:“FinTech & Digital Finance”,
+q:“InsurTech refers to:”,
+opts:[“Traditional insurance products sold through Lloyd’s of London brokers”,“Government-mandated insurance schemes such as National Insurance”,“Technology-driven innovation in the insurance industry — using AI, telematics, and data analytics to improve pricing, underwriting, and claims processing”,“International standards for insurance company capital requirements”],ans:2,
+exp:”<strong>InsurTech</strong> (Insurance + Technology) describes technology-driven innovation in the insurance sector. Examples include: telematics (usage-based car insurance), AI claims processing, parametric insurance (automatic payout when a predefined event occurs), and digital-only insurance platforms — all disrupting traditional insurance models.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 8 · FINANCIAL DATA SOURCES & CREDIBILITY (126–135)
+// ══════════════════════════════════════════════════
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“A company’s published and audited annual report and accounts is best classified as which type of financial data source?”,
+opts:[“Secondary data — because other parties will use it”,“Tertiary data — because it aggregates multiple reports”,“Primary data — it is the original, first-hand report produced directly by the company”,“Qualitative data — because it contains narrative sections”],ans:2,
+exp:“A <strong>primary source</strong> is an original, first-hand source produced directly by the reporting entity. A company’s own annual report, its regulatory filings (e.g. SEC 10-K), and its stock exchange announcements are all primary sources — not interpreted or processed by a third party.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“An investment bank publishes a research note analysing a company’s financial results, comparing them to sector peers and projecting future earnings. This is best classified as:”,
+opts:[“A primary source — it is produced by finance professionals”,“Regulatory data — it is filed with the FCA”,“Secondary data — it interprets and adds analysis to primary financial data”,“Quantitative-only data since it contains financial projections”],ans:2,
+exp:“Investment bank research notes, Financial Times articles, and Bloomberg market summaries are <strong>secondary sources</strong> — they take primary data (company filings, results announcements) and interpret, analyse, or repackage it. They may be authoritative but they are one step removed from the original source.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“An analyst is choosing between two sources of information about the same company: (A) the company’s most recent audited annual report; (B) a post on a financial social media forum claiming inside knowledge. Which is more credible, and on what basis?”,
+opts:[“B — social media often breaks news faster than formal reports”,“They are equally credible if the information is the same”,“A — audited annual reports have been independently verified by a qualified auditor against accounting standards; they carry the highest level of assurance”,“B — anonymous posts are less likely to be biased by management spin”],ans:2,
+exp:”<strong>Audited financial statements</strong> carry the highest credibility because: they are prepared under accounting standards, they have been independently verified by a qualified auditor, and they are filed with regulators. An auditor’s opinion provides structured, professional assurance. Social media posts have no verification mechanism.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“An analyst uses Bloomberg and Refinitiv to obtain EPS figures for the same company. The two databases show slightly different EPS values for the same reporting period. What is the MOST likely explanation?”,
+opts:[“One database has made a factual error and should be reported”,“EPS is entirely subjective and varies based on the analyst’s view”,“Data vendors may apply different definitional adjustments (e.g. basic vs diluted EPS, different exceptional item treatments) or have different data update cycles”,“EPS is too complex to calculate reliably from company reports”],ans:2,
+exp:“Different data providers may use slightly different <strong>EPS definitions</strong> (basic vs diluted), treat exceptional items differently, or update at different times in the reporting cycle. Neither figure is necessarily "wrong" — analysts should understand the methodology behind the data they use and apply it consistently.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“An analyst receives an anonymous email containing a spreadsheet that purportedly shows significant off-balance-sheet liabilities at a major company not disclosed in its filed accounts. What is the MOST important first action before using this data in a research note?”,
+opts:[“Immediately publish the findings to alert the market”,“Assume it is accurate as it comes from an anonymous insider”,“Verify the source and cross-reference with official primary sources (company filings, Companies House records, regulatory announcements) before drawing any conclusions”,“Calculate ratios from the spreadsheet to add credibility”],ans:2,
+exp:”<strong>Source verification</strong> is always the first step in data validation. Anonymous tips may be genuine whistleblowing or deliberate misinformation (e.g. to manipulate the share price). The analyst must cross-reference with verifiable primary sources before acting — publishing unverified claims could constitute market abuse.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“A company’s Annual Report contains: (A) audited income statement, balance sheet and cash flow statement; (B) management’s strategic narrative discussion; (C) the independent auditor’s report. Which combination represents qualitative data?”,
+opts:[“A only — all financial statements are qualitative”,“B only — the strategic narrative is qualitative”,“B and C — both are descriptive, non-numerical content”,“A, B and C — all annual report content is qualitative”],ans:2,
+exp:”<strong>Qualitative data</strong> is descriptive and non-numerical. The management narrative (discussing strategy, markets, risks) and the auditor’s report (expressing an opinion in words) are qualitative. The financial statements (A) are quantitative — they present numerical data.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“Which of the following is an example of quantitative financial data?”,
+opts:[“The CEO’s letter to shareholders discussing market conditions”,“A risk committee’s narrative assessment of cybersecurity threats”,“The company’s dividend yield of 3.8%”,“An auditor’s emphasis-of-matter paragraph explaining accounting treatment”],ans:2,
+exp:”<strong>Quantitative data</strong> is numerical and measurable. A dividend yield of 3.8% is a numerical ratio — quantitative. CEO letters, risk assessments, and auditor narratives are descriptive — qualitative. Both types are important for comprehensive financial analysis.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“A company’s Form 10-K filing with the US Securities and Exchange Commission (SEC) is best described as:”,
+opts:[“A secondary source analysing the company from outside”,“An internal management report not available to the public”,“A primary source — the company’s own mandatory annual regulatory filing”,“A tertiary source aggregating multiple company disclosures”],ans:2,
+exp:“A <strong>Form 10-K</strong> is the annual report that US-listed companies must file directly with the SEC. Like a UK annual report filed at Companies House, it is an <strong>original, first-hand primary source</strong> — the company itself produces and files it under legal obligation.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“Two analysts write independent reports on the same company’s financial health. Report A is based on the company’s audited annual accounts. Report B is based entirely on a rival’s anonymous blog post. On what basis does Report A carry greater credibility?”,
+opts:[“Report A is longer and contains more data”,“Report A comes from an audited primary source independently verified by qualified professionals; Report B’s underlying data has no verification or accountability”,“Report B is more current as blogs update faster”,“Both reports are equally credible because they reach different audiences”],ans:1,
+exp:“Credibility in financial data depends primarily on the <strong>source’s independence, verifiability, and professional accountability</strong>. Audited accounts have been examined by independent qualified auditors under professional standards. Anonymous blog posts have no accountability, no verification, and no standards to meet — making them inherently unreliable as a sole source.”},
+
+{topic:“data”,group:“Financial Data Sources & Credibility”,
+q:“A company’s financial ratios show strong and improving performance across all key metrics. However, qualitative investigation reveals: the CEO resigned unexpectedly last month, a top-10 client has just cancelled its contract, and a regulatory investigation has been announced. What does this scenario demonstrate about financial analysis?”,
+opts:[“Ratio analysis is the only reliable analytical tool — qualitative factors are speculation”,“The company is clearly financially healthy based on its ratios”,“Quantitative analysis alone can be dangerously misleading — qualitative factors represent material risks that will likely appear in future financial results”,“The CEO’s departure and contract loss are irrelevant to financial performance”],ans:2,
+exp:“This scenario demonstrates the essential role of <strong>qualitative analysis</strong> as a complement to ratio analysis. Current ratios reflect historical performance; qualitative factors — leadership changes, client losses, regulatory risk — are leading indicators of future financial deterioration. A comprehensive analyst considers both.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 9 · ACCOUNTING STANDARDS & FRAMEWORKS (136–145)
+// ══════════════════════════════════════════════════
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“Horizon Manufacturing Ltd is a UK private company with annual turnover of £14 million, 175 employees, and shares held entirely by its founding family — it has no stock exchange listing. Which accounting framework most likely applies to its financial statements?”,
+opts:[“IFRS — as it operates internationally”,“FRS 105 — the micro-entity standard”,“UK-adopted IFRS — required for all large UK companies”,“FRS 102 — the UK GAAP standard for medium and large private UK companies not listed on a stock exchange”],ans:3,
+exp:”<strong>FRS 102</strong> is the UK Generally Accepted Accounting Practice standard that applies to medium and large <strong>private companies not listed on a public market</strong>. Listed companies use UK-adopted IFRS; micro-entities use FRS 105; SMEs may use FRS 102 reduced disclosure. Horizon is a classic FRS 102 entity.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“A UK company lists its shares on the London Stock Exchange, making it publicly accountable to thousands of shareholders and institutional investors. Which accounting framework must it use for its consolidated financial statements?”,
+opts:[“FRS 102 — standard UK GAAP”,“FRS 105 — simplified micro-entity reporting”,“US GAAP — as international investors require it”,“UK-adopted International Financial Reporting Standards (IFRS)”],ans:3,
+exp:“Listed companies on UK public markets (including AIM and LSE) are required to prepare consolidated financial statements using <strong>UK-adopted IFRS</strong>. This ensures that investors — including international fund managers — can compare companies using a consistent global standard.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“The Companies Act 2006 is described as the "legal backbone" of UK financial reporting. Which of the following is NOT one of its primary obligations for companies?”,
+opts:[“Maintaining accurate accounting records”,“Preparing annual financial statements”,“Filing accounts at Companies House”,“Setting specific accounting standards and measurement rules for all items”],ans:3,
+exp:“The <strong>Companies Act 2006</strong> sets legal obligations for company reporting, record-keeping, and filing — but it does not itself prescribe specific accounting measurements. That is done by <strong>accounting standards</strong> (FRS 102, IFRS). The Act provides the legal framework; standards provide the technical rules.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“A UK listed company’s finance director says: "Now that the IASB has issued a new IFRS standard, we must adopt it immediately." Is this correct post-Brexit?”,
+opts:[“Yes — all new IFRS standards automatically apply to UK listed companies from their IASB effective date”,“Yes — Brexit had no impact on IFRS adoption in the UK”,“No — new IFRS standards must first be assessed and formally endorsed by the UK Endorsement Board before they are effective in the UK”,“No — the UK has abandoned IFRS entirely and only uses FRS 102”],ans:2,
+exp:“Post-Brexit, the UK has its own <strong>UK Endorsement Board (UKEB)</strong>. New IFRS standards from the IASB must be reviewed and formally endorsed by the UKEB before they become effective in the UK. The UK may endorse with modifications or delay adoption — meaning UK-adopted IFRS can diverge from global IFRS.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“IFRS standards are primarily designed for which category of reporting entity?”,
+opts:[“Sole traders and partnerships in all countries”,“Micro-entities with simplified reporting needs”,“Government departments and public sector bodies”,“Publicly listed companies and other entities with public accountability to capital markets”],ans:3,
+exp:”<strong>IFRS</strong> is designed for entities with public accountability — primarily listed companies whose financial statements are used by a broad international investor base. The transparency and comparability requirements of IFRS reflect the needs of global capital markets, where investors compare companies across borders.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“FRS 105 — the micro-entity regime — applies to companies that meet which criteria?”,
+opts:[“Any UK company that chooses simplified reporting”,“Companies with turnover above £10.2 million”,“Only companies registered in England and Wales”,“Very small UK companies that meet specific size thresholds including turnover typically below £632,000 and balance sheet below £316,000”],ans:3,
+exp:”<strong>FRS 105</strong> is available only to <strong>micro-entities</strong> — the very smallest companies meeting strict size criteria. It offers significantly simplified reporting, including a reduced balance sheet and no requirement for a directors’ report. Most companies are too large to qualify and must use FRS 102 or IFRS.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“Why are standardised accounting frameworks (like IFRS and FRS 102) important for investors and analysts?”,
+opts:[“They allow each company to choose its preferred accounting policies freely”,“They guarantee that companies will be profitable if followed correctly”,“They ensure financial statements are prepared on a consistent basis, enabling meaningful comparison across companies and time periods”,“They replace the need for independent audit”],ans:2,
+exp:”<strong>Comparability and consistency</strong> are the core benefits of standardised frameworks. When all companies measure and report items using the same rules, analysts can meaningfully compare ratios, trends, and performance across companies, sectors, and years — without worrying that differences are simply due to different accounting policies.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“Which independent global body develops and issues International Financial Reporting Standards (IFRS)?”,
+opts:[“The Financial Conduct Authority (FCA)”,“Companies House”,“The Office for National Statistics (ONS)”,“The International Accounting Standards Board (IASB)”],ans:3,
+exp:“The <strong>IASB (International Accounting Standards Board)</strong>, based in London, is the independent body responsible for developing IFRS standards used by over 140 countries. The IASB is overseen by the IFRS Foundation and consults widely with stakeholders globally before issuing new or amended standards.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“Under the Companies Act 2006, which companies are exempt from the requirement for a statutory external audit?”,
+opts:[“All private companies regardless of size”,“Any company that has been trading for less than 3 years”,“Small companies that meet specific size thresholds (and are not otherwise required to be audited e.g. by their constitution or banking covenants)”,“Only companies registered outside the UK”],ans:2,
+exp:“The Companies Act 2006 provides an <strong>audit exemption for small companies</strong> meeting specific size criteria (turnover below £10.2m, balance sheet below £5.1m, fewer than 50 employees). Large companies, public companies, and subsidiaries of larger groups are generally required to have a statutory audit regardless.”},
+
+{topic:“standards”,group:“Accounting Standards & Frameworks”,
+q:“A company’s auditor raises doubts about whether the going concern assumption remains appropriate after finding that the company has been unable to pay several large invoices and its main lender is reviewing the loan facility. What is the accounting implication if going concern is no longer appropriate?”,
+opts:[“No change is required — accounts are always prepared on a going concern basis”,“The company must switch to preparing accounts on a break-up (liquidation) basis, valuing assets at what they would realise in a forced sale, and this must be disclosed prominently”,“The auditor must resign immediately”,“The company must move to cash accounting immediately”],ans:1,
+exp:“If the going concern basis cannot be justified, financial statements must be prepared on a <strong>break-up basis</strong> — assets are valued at their estimated realisable value in a forced sale (often much lower than carrying value), and all liabilities become immediately due. This change, and the material uncertainty, must be <strong>disclosed clearly</strong> in the financial statements and auditor’s report.”},
+
+// ══════════════════════════════════════════════════
+// GROUP 10 · MIXED APPLICATION SCENARIOS (146–150)
+// ══════════════════════════════════════════════════
+{topic:“mixed”,group:“Mixed Application Scenarios”,
+q:“Oakfield Retail plc reports £3.2 million net profit for the year. Three months later, it files for administration. An investigation reveals: trade receivables had doubled (customers not paying), inventory had grown by 60% (stock not selling), and short-term borrowings had trebled. Which financial analysis could have flagged this risk BEFORE administration?”,
+opts:[“The income statement alone would have shown the crisis clearly”,“A P&L ratio analysis showing improving gross margins”,“Analysis of the cash flow statement alongside working capital ratios (current ratio, acid test, debtor days, stock turnover) — which would have revealed severe cash absorption despite reported profits”,“ESG analysis of the company’s governance practices”],ans:2,
+exp:“This is a classic <strong>overtrading/working capital crisis</strong> — profitable but cash-starved. The <strong>cash flow statement</strong> would have shown negative operating cash flow despite profits. <strong>Working capital ratios</strong> (rising debtor days, falling stock turnover, declining current ratio) would have provided early warning signals well before administration.”},
+
+{topic:“mixed”,group:“Mixed Application Scenarios”,
+q:“A credit analyst is assessing a company’s ability to repay a proposed £5 million 8-year loan. Which combination of sources provides the most robust assessment of long-term solvency?”,
+opts:[“The company’s Instagram profile and news headlines”,“The income statement alone — profitability is the only metric that matters for loan repayment”,“The balance sheet combined with the notes disclosing debt terms, covenants, and maturity profile”,“A single analyst’s blog post reviewing the company’s management team”],ans:2,
+exp:“Long-term solvency assessment requires: the <strong>balance sheet</strong> (to see total assets vs total liabilities and existing debt levels) + the <strong>notes</strong> (to understand debt maturity, interest rates, covenants, contingent liabilities, and any off-balance-sheet obligations). Together, these provide the most authoritative and complete picture.”},
+
+{topic:“mixed”,group:“Mixed Application Scenarios”,
+q:“Two competing companies report identical net profits of £4 million. Company A is funded 80% by equity and 20% by debt. Company B is funded 30% by equity and 70% by debt. Despite identical profits, why does Company B carry significantly higher financial risk?”,
+opts:[“Company B has more customers and therefore more operational complexity”,“Identical profits make the companies equally risky by definition”,“Company B’s high debt creates large fixed interest payments that must be met even in poor trading years — if profits fell significantly, Company B might struggle to service its debt while Company A would be less affected”,“Company A is more risky because equity investors have higher return expectations”],ans:2,
+exp:”<strong>Financial risk is driven by leverage</strong>, not just profit level. Company B’s heavy reliance on debt (70%) means large fixed interest payments. If market conditions deteriorate and profits fall, Company B must still pay its interest — whereas Company A, with minimal debt, has much greater financial flexibility. Same profit, very different risk profile.”},
+
+{topic:“mixed”,group:“Mixed Application Scenarios”,
+q:“A manufacturing company invests £8 million in a complete ERP system upgrade. In the year following implementation, revenue is unchanged, but balance sheet assets have increased significantly and the income statement shows an increase in depreciation and amortisation charges. A shareholder is concerned the company is "going backwards." What is the most likely accurate explanation?”,
+opts:[“The investment was a mistake and has destroyed shareholder value”,“Revenue must be declining due to the disruption caused by the new system”,“The £8 million ERP investment has been capitalised as a non-current asset and is being amortised — revenue benefits (efficiency gains, cost savings, capacity increases) are expected to materialise in future periods, not immediately”,“The income statement contains errors that should be reported to auditors”],ans:2,
+exp:“Large technology investments are typically <strong>capitalised as intangible assets</strong> and amortised over their useful life. The balance sheet grows (asset added); the income statement shows amortisation charges. Revenue benefits from improved efficiency usually emerge gradually over subsequent years — not immediately. This is normal capital investment accounting under the matching principle.”},
+
+{topic:“mixed”,group:“Mixed Application Scenarios”,
+q:“A private equity firm is conducting due diligence on a target acquisition. The target’s income statement shows 4 years of strong revenue and profit growth. However: (1) the cash flow statement shows declining operating cash flow; (2) the balance sheet shows rapidly increasing trade receivables and inventory; (3) the notes reveal a material contingent liability from a pending regulatory investigation; (4) qualitative research reveals the founding management team has just resigned. What is the correct analytical conclusion?”,
+opts:[“The income statement growth trend confirms this is an excellent acquisition at any price”,“The target is clearly a strong performer — one cash flow year should not affect the decision”,“A holistic analysis reveals significant red flags: profit quality is low (cash not following profit), hidden risks exist (contingent liability, balance sheet deterioration), and leadership risk is material — due diligence must probe these issues deeply before any offer is made”,“The only issue is the management team — which can easily be replaced post-acquisition”],ans:2,
+exp:“This scenario requires <strong>holistic, integrated financial analysis</strong>: (1) Income statement growth looks strong but (2) cash flow divergence signals profit quality issues; (3) balance sheet deterioration signals working capital pressure; (4) the contingent liability represents an unquantified but potentially material risk; (5) management departure is a serious qualitative red flag. Relying on the income statement alone would be dangerously misleading — this is exactly why all three statements AND qualitative analysis must be integrated.”},
+];
+
+// ── STATE ──
+let answered=0, correct=0;
+const revealed=new Set();
+const userAnswers={};
+let currentFilter=“all”;
+
+// ── RENDER ──
+function render(filter){
+const main=document.getElementById(“main-content”);
+// keep summary node
+const sumNode=document.getElementById(“summary”);
+main.innerHTML=””;
+
+let groups={}, order=[];
+QUESTIONS.forEach((q,i)=>{
+if(filter!==“all”&&q.topic!==filter) return;
+if(!groups[q.group]){groups[q.group]=[];order.push(q.group);}
+groups[q.group].push({q,i});
+});
+
+order.forEach(grp=>{
+const hdr=document.createElement(“div”);
+hdr.className=“topic-header”;
+hdr.innerHTML=`<h2>${grp}</h2><div class="topic-line"></div><span class="topic-count">${groups[grp].length}q</span>`;
+main.appendChild(hdr);
+groups[grp].forEach(({q,i})=>main.appendChild(buildCard(q,i)));
+});
+
+if(filter===“all”||filter===currentFilter){
+if(sumNode) main.appendChild(sumNode);
+}
+updateBar();
+}
+
+function buildCard(q,i){
+const card=document.createElement(“div”);
+const rev=revealed.has(i);
+card.className=“q-card”+(rev?(userAnswers[i]===q.ans?” answered-correct”:” answered-wrong”):””);
+card.id=“qcard-”+i;
+const letters=[“A”,“B”,“C”,“D”];
+const opts=q.opts.map((o,oi)=>{
+let cls=“opt-btn”;
+if(rev){
+if(oi===q.ans)cls+=” correct”;
+else if(oi===userAnswers[i])cls+=” wrong”;
+}
+return `<button class="${cls}" onclick="selectOpt(${i},${oi})" ${rev?'disabled':''}><span class="opt-letter">${letters[oi]}</span><span>${o}</span></button>`;
+}).join(””);
+const fbCls=rev?(userAnswers[i]===q.ans?“correct-fb”:“wrong-fb”):””;
+const fbTxt=rev?(userAnswers[i]===q.ans?“✓ Correct”:“✗ Incorrect — correct answer highlighted”):””;
+card.innerHTML=` <div class="q-head"><span class="q-num">Q${i+1}</span><span class="q-text">${q.q}</span></div> <div class="q-options">${opts}</div> <div class="q-feedback ${fbCls} ${rev?'show':''}">${fbTxt}</div> <div class="explanation ${rev?'show':''}"><div class="exp-label">Explanation</div><div class="exp-text">${q.exp}</div></div>`;
+return card;
+}
+
+function selectOpt(qi,oi){
+if(revealed.has(qi))return;
+const q=QUESTIONS[qi];
+userAnswers[qi]=oi;
+revealed.add(qi);
+answered++;
+if(oi===q.ans)correct++;
+updateBar();
+const card=document.getElementById(“qcard-”+qi);
+if(!card)return;
+card.className=“q-card”+(oi===q.ans?” answered-correct”:” answered-wrong”);
+card.querySelectorAll(”.opt-btn”).forEach((btn,idx)=>{
+btn.disabled=true;
+if(idx===q.ans)btn.className=“opt-btn correct”;
+else if(idx===oi)btn.className=“opt-btn wrong”;
+});
+const fb=card.querySelector(”.q-feedback”);
+fb.className=“q-feedback “+(oi===q.ans?“correct-fb”:“wrong-fb”)+” show”;
+fb.textContent=oi===q.ans?“✓ Correct”:“✗ Incorrect — correct answer highlighted”;
+card.querySelector(”.explanation”).className=“explanation show”;
+
+if(answered===QUESTIONS.length){
+const sum=document.getElementById(“summary”);
+if(sum){
+sum.style.display=“block”;
+const pct=Math.round(correct/QUESTIONS.length*100);
+sum.querySelector(”.final-score”).textContent=correct+” / “+QUESTIONS.length;
+sum.querySelector(”.grade-msg”).textContent=
+pct>=70?“🎓 Excellent — you are well above the pass threshold!”:
+pct>=60?“✅ Pass achieved! Keep reviewing weak areas.”:
+“📚 Below 60% — review explanations and retry. Focus on topics you found hardest.”;
+}
+}
+}
+
+function updateBar(){
+document.getElementById(“score-display”).textContent=
+`Score: ${correct} / ${answered} answered · ${QUESTIONS.length-answered} remaining`;
+document.getElementById(“progress-bar”).style.width=(answered/QUESTIONS.length*100)+”%”;
+}
+
+function revealAll(){
+QUESTIONS.forEach((_,i)=>revealed.add(i));
+render(currentFilter);
+}
+
+function resetAll(){
+revealed.clear();
+Object.keys(userAnswers).forEach(k=>delete userAnswers[k]);
+answered=0;correct=0;
+const sum=document.getElementById(“summary”);
+if(sum)sum.style.display=“none”;
+render(currentFilter);
+}
+
+function filterTopic(t,btn){
+currentFilter=t;
+document.querySelectorAll(”.topic-btn”).forEach(b=>b.classList.remove(“active”));
+btn.classList.add(“active”);
+render(t);
+}
+
+document.addEventListener(“DOMContentLoaded”,()=>{
+const wrap=document.getElementById(“main-content”);
+const sum=document.createElement(“div”);
+sum.id=“summary”;
+sum.innerHTML=`<h2>Quiz Complete</h2> <div class="final-score">0/150</div> <div class="grade-msg"></div> <p style="color:var(--ivory-dim);margin-bottom:1.5rem">Review the explanations on any question you found difficult, then use the Reset button to attempt it again.</p> <button id="restart-btn" onclick="resetAll()">↺ Reset &amp; Try Again</button>`;
+wrap.appendChild(sum);
+render(“all”);
+});
+</script>
+
+</body>
+</html>
